@@ -1,0 +1,135 @@
+/* Estilos compartidos para login.html y registro.html */
+
+:root {
+  --fondo: #ffffff;
+  --tarjeta: #f0f0f2;
+  --borde: #d9d9de;
+  --texto: #1c1c1e;
+  --texto-suave: #6b6b73;
+  --acento: #2d2d33;
+  --acento-hover: #111114;
+  --error: #b3261e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.tarjeta {
+  width: 100%;
+  max-width: 400px;
+  padding: 36px 32px;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+}
+
+.tarjeta h1 {
+  font-size: 1.6rem;
+  font-weight: 650;
+  margin-bottom: 4px;
+}
+
+.subtitulo {
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+
+.campo {
+  margin-bottom: 18px;
+}
+
+.campo label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.campo input {
+  width: 100%;
+  padding: 11px 12px;
+  font: inherit;
+  color: var(--texto);
+  background: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: var(--acento);
+  box-shadow: 0 0 0 3px rgba(45, 45, 51, 0.15);
+}
+
+.mensaje-error {
+  display: none;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: var(--error);
+}
+
+.campo.invalido input {
+  border-color: var(--error);
+}
+
+.campo.invalido .mensaje-error {
+  display: block;
+}
+
+.boton {
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px;
+  font: inherit;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--acento);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.boton:hover {
+  background: var(--acento-hover);
+}
+
+.boton:focus-visible {
+  outline: 3px solid rgba(45, 45, 51, 0.35);
+  outline-offset: 2px;
+}
+
+.enlace-alterno {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--texto-suave);
+}
+
+.enlace-alterno a {
+  color: var(--texto);
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .tarjeta {
+    padding: 28px 20px;
+  }
+}
