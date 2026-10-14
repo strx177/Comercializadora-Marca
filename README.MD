@@ -14,3 +14,5 @@ Christian Mollo Quispe = ChrisFullHD
 | Gestión de devoluciones y vencimientos          | 15, 16, 17, 18, 19, 20     | 6        | Christian Mollo  | feature/cmollo    |
 | Gestión de proveedores y ventas fiadas          | 21, 22, 23, 24             | 4        | Giovanni Gómez   | feature/ggomez    |
 | Gestión de estadísticas, información y reportes | 26, 27, 28, 29, 30         | 5        | Christian Mollo  | feature/cmollo    |
+
+Para el framework de estilos se utilizará bootstrap. (http://www.getbootstrap.com)
