@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registrar producto | Comercializadora Marca</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Estilos propios del sistema -->
+    <link href="estilo_registrar_producto.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Comercializadora Marca, inicio">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span class="brand-name">
+            <span>Comercializadora</span>
+            <strong>MARCA</strong>
+          </span>
+        </a>
+
+        <div class="user-menu">
+          <span class="user-avatar" aria-hidden="true">U</span>
+          <span>Usuario</span>
+          <span class="dropdown-caret" aria-hidden="true"></span>
+        </div>
+      </header>
+
+      <aside class="sidebar" aria-label="Navegación principal">
+        <nav class="nav flex-column">
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">⌂</span><span>Inicio</span></a
+          >
+
+          <div class="nav-group-label">Gestión comercial</div>
+          <a class="nav-link active" href="#"
+            ><span class="nav-icon">▣</span><span>Productos</span></a
+          >
+          <a class="nav-link nav-subitem" href="#"
+            ><span class="nav-icon">☷</span><span>Listar productos</span></a
+          >
+          <a
+            class="nav-link nav-subitem current-page"
+            href="#"
+            aria-current="page"
+            ><span class="nav-icon">＋</span><span>Registrar producto</span></a
+          >
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">🛒</span><span>Ventas</span></a
+          >
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">▤</span><span>Inventario</span></a
+          >
+
+          <div class="nav-group-label">Administración</div>
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">♙</span><span>Clientes</span></a
+          >
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">▰</span><span>Proveedores</span></a
+          >
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">▥</span><span>Reportes</span></a
+          >
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">⚙</span><span>Configuración</span></a
+          >
+        </nav>
+
+        <div class="sidebar-footer">
+          <span class="status-dot"></span>
+          Sistema de gestión
+          <small>Comercializadora Marca</small>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div class="page-heading">
+          <div class="heading-icon" aria-hidden="true">▦</div>
+          <div>
+            <div class="eyebrow">PRODUCTOS / REGISTRO</div>
+            <h1>Registrar nuevo producto</h1>
+            <p>
+              Completa la información para incorporar un producto al inventario.
+            </p>
+          </div>
+        </div>
+
+        <section class="form-card" aria-labelledby="form-title">
+          <div class="card-heading">
+            <div>
+              <h2 id="form-title">Información del producto</h2>
+              <p>
+                Los campos marcados con <span class="required-mark">*</span> son
+                obligatorios.
+              </p>
+            </div>
+            <span class="form-step"
+              ><span class="step-dot"></span> Nuevo registro</span
+            >
+          </div>
+
+          <form action="#" method="post">
+            <div class="row g-4">
+              <div class="col-12 col-xl-7">
+                <div class="mb-4">
+                  <label for="barcode" class="form-label"
+                    >Código de barras
+                    <span class="required-mark">*</span></label
+                  >
+                  <div class="input-group input-with-icon">
+                    <span class="input-group-text" aria-hidden="true">▥</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="barcode"
+                      name="barcode"
+                      placeholder="Ingresa o escanea el código de barras"
+                      required
+                    />
+                    <button
+                      class="btn btn-outline-primary scan-button"
+                      type="button"
+                    >
+                      Escanear
+                    </button>
+                  </div>
+                  <div class="field-help">
+                    También puedes ingresar el código manualmente.
+                  </div>
+                  <div class="associate-row">
+                    <span class="associate-line"></span>
+                    <span>o</span>
+                    <span class="associate-line"></span>
+                  </div>
+                  <button
+                    class="btn btn-light associate-button w-100"
+                    type="button"
+                  >
+                    <span aria-hidden="true">↗</span> Asociar producto existente
+                  </button>
+                </div>
+
+                <div class="mb-4">
+                  <label for="product-name" class="form-label"
+                    >Nombre del producto
+                    <span class="required-mark">*</span></label
+                  >
+                  <div class="input-group input-with-icon">
+                    <span class="input-group-text" aria-hidden="true">◇</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="product-name"
+                      name="product_name"
+                      placeholder="Ej. Arroz grado 1, 1 kg"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label for="description" class="form-label"
+                    >Descripción</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="description"
+                    name="description"
+                    rows="4"
+                    placeholder="Agrega detalles útiles para identificar el producto"
+                  ></textarea>
+                </div>
+
+                <div class="mb-2">
+                  <label for="category" class="form-label"
+                    >Categoría <span class="required-mark">*</span></label
+                  >
+                  <select
+                    class="form-select"
+                    id="category"
+                    name="category"
+                    required
+                  >
+                    <option value="" selected disabled>
+                      Selecciona una categoría
+                    </option>
+                    <option>Abarrotes</option>
+                    <option>Bebidas</option>
+                    <option>Lácteos y refrigerados</option>
+                    <option>Aseo del hogar</option>
+                    <option>Cuidado personal</option>
+                    <option>Snacks y confites</option>
+                    <option>Otros</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-12 col-xl-5">
+                <div class="price-panel">
+                  <label for="price" class="form-label"
+                    >Precio de venta <span class="required-mark">*</span></label
+                  >
+                  <div class="input-group input-with-icon price-input">
+                    <span class="input-group-text">$</span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="price"
+                      name="price"
+                      min="0"
+                      step="1"
+                      placeholder="0"
+                      required
+                    />
+                    <span class="input-group-text currency">CLP</span>
+                  </div>
+                  <div class="field-help">
+                    Ingresa el precio final de venta en pesos chilenos.
+                  </div>
+                </div>
+
+                <div class="product-note">
+                  <div class="note-icon" aria-hidden="true">i</div>
+                  <div>
+                    <strong>Antes de guardar</strong>
+                    <p>
+                      Revisa que el código de barras, el nombre y el precio
+                      correspondan al producto que deseas registrar.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="preview-card">
+                  <div class="preview-topline">
+                    <span>VISTA PREVIA</span>
+                    <span class="preview-status">Nuevo</span>
+                  </div>
+                  <div class="preview-product-icon" aria-hidden="true">▦</div>
+                  <strong id="preview-name">Nombre del producto</strong>
+                  <span id="preview-category">Categoría sin seleccionar</span>
+                  <div class="preview-price" id="preview-price">$ 0</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <a href="#" class="btn btn-cancel">Cancelar</a>
+              <button type="reset" class="btn btn-reset">Limpiar campos</button>
+              <button type="submit" class="btn btn-save">
+                <span aria-hidden="true">▣</span> Guardar producto
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <footer class="page-footer">
+          <span>Comercializadora Marca</span>
+          <span>Gestión de productos</span>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
