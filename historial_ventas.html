@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de ventas | Comercializadora Marca</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilo_historial_ventas.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+    <!-- Barra superior -->
+    <header class="topbar">
+        <a href="#" class="brand">
+            <div class="brand-mark">M</div>
+            <div class="brand-name">
+                <span>Comercializadora</span>
+                <strong>MARCA</strong>
+            </div>
+        </a>
+
+        <div class="user-menu">
+            <span>Administrador</span>
+            <div class="user-avatar">AD</div>
+            <span class="dropdown-caret"></span>
+        </div>
+    </header>
+
+    <!-- Menú lateral -->
+    <aside class="sidebar">
+        <nav class="nav flex-column">
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">⌂</span>
+                Inicio
+            </a>
+
+            <div class="nav-group-label">Gestión comercial</div>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">▣</span>
+                Productos
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">☷</span>
+                Listar productos
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">＋</span>
+                Registrar producto
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">🛒</span>
+                Ventas
+            </a>
+
+            <a href="#" class="nav-link active">
+                <span class="nav-icon">▤</span>
+                Historial de ventas
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">▦</span>
+                Inventario
+            </a>
+
+            <div class="nav-group-label">Administración</div>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">♙</span>
+                Clientes
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">♧</span>
+                Proveedores
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">▥</span>
+                Reportes
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">⚙</span>
+                Configuración
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="status-dot"></span>
+            <span>Sistema de gestión</span>
+            <small>Comercializadora Marca</small>
+        </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+        <!-- Encabezado -->
+        <section class="page-heading">
+            <div class="heading-icon">▤</div>
+
+            <div>
+                <div class="eyebrow">VENTAS / HISTORIAL</div>
+                <h1>Historial de ventas</h1>
+                <p>Consulta las ventas realizadas y revisa sus detalles, fechas y medios de pago</p>
+            </div>
+        </section>
+
+        <!-- Indicadores -->
+        <section class="summary-grid">
+
+            <article class="summary-card">
+                <div class="summary-icon summary-icon-yellow">＄</div>
+                <div class="summary-info">
+                    <span class="summary-label">Total vendido</span>
+                    <strong class="summary-value">$428.750</strong>
+                    <span class="summary-description">Según los resultados actuales</span>
+                </div>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon summary-icon-orange">▤</div>
+                <div class="summary-info">
+                    <span class="summary-label">Ventas registradas</span>
+                    <strong class="summary-value">36</strong>
+                    <span class="summary-description">Cantidad de ventas encontradas</span>
+                </div>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon summary-icon-red">◷</div>
+                <div class="summary-info">
+                    <span class="summary-label">Última venta</span>
+                    <strong class="summary-value summary-date">15 oct. 2026</strong>
+                    <span class="summary-description">16:42 hrs.</span>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Filtros de búsqueda -->
+        <section class="content-card filter-card">
+
+            <div class="card-heading">
+                <div>
+                    <h2>Buscar ventas</h2>
+                    <p>Utiliza los filtros para encontrar una venta específica</p>
+                </div>
+
+                <span class="form-step">
+                    <span class="step-dot"></span>
+                    Filtros de búsqueda
+                </span>
+            </div>
+
+            <form id="sales-filter-form">
+
+                <div class="row g-3">
+
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <label for="sale-id" class="form-label">N.º de venta</label>
+                        <div class="input-group input-with-icon">
+                            <span class="input-group-text">⌕</span>
+                            <input
+                                type="text"
+                                id="sale-id"
+                                class="form-control"
+                                placeholder="Ej. V-0001"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <label for="date-from" class="form-label">Fecha desde</label>
+                        <input type="date" id="date-from" class="form-control">
+                    </div>
+
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <label for="date-to" class="form-label">Fecha hasta</label>
+                        <input type="date" id="date-to" class="form-control">
+                    </div>
+
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <label for="payment-method" class="form-label">Medio de pago</label>
+                        <select id="payment-method" class="form-select">
+                            <option value="">Todos los medios</option>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="Tarjeta">Tarjeta</option>
+                            <option value="Transferencia">Transferencia</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="filter-actions">
+                    <button type="submit" class="btn btn-search">
+                        <span>⌕</span>
+                        Buscar ventas
+                    </button>
+
+                    <button type="reset" class="btn btn-clear">
+                        Limpiar filtros
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+        <!-- Resultados -->
+        <section class="content-card results-card">
+
+            <div class="card-heading results-heading">
+                <div>
+                    <h2>Ventas registradas</h2>
+                    <p>Revisa las operaciones registradas en el sistema</p>
+                </div>
+
+                <span class="results-count">
+                    <strong id="results-count">6</strong> resultados
+                </span>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table sales-table align-middle">
+                    <thead>
+                        <tr>
+                            <th>N.º de venta</th>
+                            <th>Fecha y hora</th>
+                            <th>Vendedor</th>
+                            <th>Productos</th>
+                            <th>Medio de pago</th>
+                            <th class="text-end">Total</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="sales-table-body">
+
+                        <tr data-sale-id="V-0006" data-date="2026-10-15" data-payment="Efectivo">
+                            <td><span class="sale-id">V-0006</span></td>
+                            <td>
+                                <strong>15/10/2026</strong>
+                                <small>16:42 hrs.</small>
+                            </td>
+                            <td>Administrador</td>
+                            <td>4 productos</td>
+                            <td><span class="payment-badge payment-cash">Efectivo</span></td>
+                            <td class="text-end sale-total">$18.500</td>
+                            <td class="text-center">
+                                <button class="btn btn-detail" type="button" data-sale="V-0006">
+                                    Ver detalle
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr data-sale-id="V-0005" data-date="2026-10-15" data-payment="Tarjeta">
+                            <td><span class="sale-id">V-0005</span></td>
+                            <td>
+                                <strong>15/10/2026</strong>
+                                <small>15:28 hrs.</small>
+                            </td>
+                            <td>Vendedor 01</td>
+                            <td>7 productos</td>
+                            <td><span class="payment-badge payment-card">Tarjeta</span></td>
+                            <td class="text-end sale-total">$32.850</td>
+                            <td class="text-center">
+                                <button class="btn btn-detail" type="button" data-sale="V-0005">
+                                    Ver detalle
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr data-sale-id="V-0004" data-date="2026-10-15" data-payment="Transferencia">
+                            <td><span class="sale-id">V-0004</span></td>
+                            <td>
+                                <strong>15/10/2026</strong>
+                                <small>14:51 hrs.</small>
+                            </td>
+                            <td>Administrador</td>
+                            <td>3 productos</td>
+                            <td><span class="payment-badge payment-transfer">Transferencia</span></td>
+                            <td class="text-end sale-total">$12.300</td>
+                            <td class="text-center">
+                                <button class="btn btn-detail" type="button" data-sale="V-0004">
+                                    Ver detalle
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr data-sale-id="V-0003" data-date="2026-10-14" data-payment="Efectivo">
+                            <td><span class="sale-id">V-0003</span></td>
+                            <td>
+                                <strong>14/10/2026</strong>
+                                <small>19:10 hrs.</small>
+                            </td>
+                            <td>Vendedor 01</td>
+                            <td>5 productos</td>
+                            <td><span class="payment-badge payment-cash">Efectivo</span></td>
+                            <td class="text-end sale-total">$24.700</td>
+                            <td class="text-center">
+                                <button class="btn btn-detail" type="button" data-sale="V-0003">
+                                    Ver detalle
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr data-sale-id="V-0002" data-date="2026-10-14" data-payment="Tarjeta">
+                            <td><span class="sale-id">V-0002</span></td>
+                            <td>
+                                <strong>14/10/2026</strong>
+                                <small>17:35 hrs.</small>
+                            </td>
+                            <td>Administrador</td>
+                            <td>2 productos</td>
+                            <td><span class="payment-badge payment-card">Tarjeta</span></td>
+                            <td class="text-end sale-total">$8.400</td>
+                            <td class="text-center">
+                                <button class="btn btn-detail" type="button" data-sale="V-0002">
+                                    Ver detalle
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr data-sale-id="V-0001" data-date="2026-10-14" data-payment="Transferencia">
+                            <td><span class="sale-id">V-0001</span></td>
+                            <td>
+                                <strong>14/10/2026</strong>
+                                <small>16:20 hrs.</small>
+                            </td>
+                            <td>Vendedor 01</td>
+                            <td>6 productos</td>
+                            <td><span class="payment-badge payment-transfer">Transferencia</span></td>
+                            <td class="text-end sale-total">$41.200</td>
+                            <td class="text-center">
+                                <button class="btn btn-detail" type="button" data-sale="V-0001">
+                                    Ver detalle
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="empty-state" class="empty-state" hidden>
+                <div class="empty-state-icon">⌕</div>
+                <strong>No se encontraron ventas</strong>
+                <p>Prueba con otros filtros para encontrar resultados</p>
+            </div>
+
+            <div class="table-footer">
+                <span id="table-info">Mostrando 6 ventas de ejemplo</span>
+
+                <nav aria-label="Paginación de ventas">
+                    <ul class="pagination pagination-custom">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Página anterior">‹</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#" aria-current="page">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Página siguiente">›</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </section>
+
+        <!-- Pie de página -->
+        <footer class="page-footer">
+            <span>© 2026 <strong>Comercializadora Marca</strong></span>
+            <span>Gestión de ventas e inventario</span>
+        </footer>
+
+    </main>
+</div>
+
+<!-- Ventana de detalle de venta -->
+<div class="modal fade" id="saleDetailModal" tabindex="-1" aria-labelledby="saleDetailTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content detail-modal">
+            <div class="modal-header">
+                <div>
+                    <div class="eyebrow">DETALLE DE OPERACIÓN</div>
+                    <h2 class="modal-title" id="saleDetailTitle">Venta</h2>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <div class="modal-body">
+                <p class="detail-placeholder">
+                    Esta es una vista de demostración. El detalle real de la venta se deberá cargar desde el sistema.
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const filterForm = document.getElementById("sales-filter-form");
+    const saleIdInput = document.getElementById("sale-id");
+    const dateFromInput = document.getElementById("date-from");
+    const dateToInput = document.getElementById("date-to");
+    const paymentInput = document.getElementById("payment-method");
+    const tableBody = document.getElementById("sales-table-body");
+    const rows = Array.from(tableBody.querySelectorAll("tr"));
+    const emptyState = document.getElementById("empty-state");
+    const resultsCount = document.getElementById("results-count");
+    const tableInfo = document.getElementById("table-info");
+
+    function filterSales() {
+        const saleId = saleIdInput.value.trim().toLowerCase();
+        const dateFrom = dateFromInput.value;
+        const dateTo = dateToInput.value;
+        const payment = paymentInput.value;
+        let visibleCount = 0;
+
+        rows.forEach(row => {
+            const rowSaleId = row.dataset.saleId.toLowerCase();
+            const rowDate = row.dataset.date;
+            const rowPayment = row.dataset.payment;
+
+            const matchesId = !saleId || rowSaleId.includes(saleId);
+            const matchesFrom = !dateFrom || rowDate >= dateFrom;
+            const matchesTo = !dateTo || rowDate <= dateTo;
+            const matchesPayment = !payment || rowPayment === payment;
+
+            const visible = matchesId && matchesFrom && matchesTo && matchesPayment;
+
+            row.hidden = !visible;
+
+            if (visible) visibleCount++;
+        });
+
+        resultsCount.textContent = visibleCount;
+        tableInfo.textContent = `Mostrando ${visibleCount} venta(s) de ejemplo`;
+        emptyState.hidden = visibleCount !== 0;
+    }
+
+    filterForm.addEventListener("submit", event => {
+        event.preventDefault();
+        filterSales();
+    });
+
+    filterForm.addEventListener("reset", () => {
+        setTimeout(filterSales, 0);
+    });
+
+    document.querySelectorAll(".btn-detail").forEach(button => {
+        button.addEventListener("click", () => {
+            document.getElementById("saleDetailTitle").textContent =
+                `Venta ${button.dataset.sale}`;
+
+            bootstrap.Modal.getOrCreateInstance(
+                document.getElementById("saleDetailModal")
+            ).show();
+        });
+    });
+
+    document.querySelectorAll(".pagination-custom .page-link").forEach(link => {
+        link.addEventListener("click", event => event.preventDefault());
+    });
+</script>
+
+</body>
+</html>
