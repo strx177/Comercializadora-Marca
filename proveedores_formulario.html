@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Registrar proveedor | Comercializadora Marca</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="proveedores.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="brand">Comercializadora Marca</p>
+        <p class="brand-sub">Sistema de gestión comercial</p>
+      </div>
+      <span class="badge text-bg-light border rounded-pill px-3 py-2"
+        >Gestión de proveedores</span
+      >
+    </header>
+    <main class="page">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Directorio comercial</p>
+          <h1>Registrar proveedor</h1>
+          <p>Completa los datos de contacto y la información comercial.</p>
+        </div>
+        <a class="btn btn-outline-warm" href="proveedores_lista.html"
+          >← Volver a proveedores</a
+        >
+      </div>
+      <section class="panel">
+        <form action="#" method="get">
+          <h2 class="h5 fw-bold mb-4">Información del proveedor</h2>
+          <div class="row g-4">
+            <div class="col-12 col-md-4">
+              <label class="field-label" for="codigo"
+                >Código del proveedor</label
+              ><input
+                class="form-control"
+                id="codigo"
+                name="codigo"
+                placeholder="Ej. PROV-004"
+              />
+            </div>
+            <div class="col-12 col-md-8">
+              <label class="field-label" for="empresa"
+                >Nombre de empresa / proveedor *</label
+              ><input
+                class="form-control"
+                id="empresa"
+                name="empresa"
+                required
+                placeholder="Nombre comercial"
+              />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="field-label" for="contacto"
+                >Nombre de contacto</label
+              ><input
+                class="form-control"
+                id="contacto"
+                name="contacto"
+                placeholder="Nombre y apellido"
+              />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="field-label" for="rut">RUT</label
+              ><input
+                class="form-control"
+                id="rut"
+                name="rut"
+                placeholder="12.345.678-9"
+              />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="field-label" for="telefono">Teléfono *</label
+              ><input
+                class="form-control"
+                id="telefono"
+                name="telefono"
+                required
+                type="tel"
+                placeholder="+56 9 1234 5678"
+              />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="field-label" for="correo">Correo electrónico</label
+              ><input
+                class="form-control"
+                id="correo"
+                name="correo"
+                type="email"
+                placeholder="contacto@empresa.cl"
+              />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="field-label" for="direccion">Dirección</label
+              ><input
+                class="form-control"
+                id="direccion"
+                name="direccion"
+                placeholder="Calle, número y comuna"
+              />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="field-label" for="estado">Estado</label
+              ><select class="form-select" id="estado" name="estado">
+                <option selected>Activo</option>
+                <option>Inactivo</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="field-label" for="observaciones"
+                >Observaciones</label
+              ><textarea
+                class="form-control"
+                id="observaciones"
+                name="observaciones"
+                rows="3"
+                placeholder="Notas sobre productos o condiciones de compra"
+              ></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <a class="btn btn-outline-warm" href="proveedores_lista.html"
+              >Cancelar</a
+            ><button class="btn btn-maiz" type="submit">
+              Guardar proveedor
+            </button>
+          </div>
+          <p class="small muted mb-0">
+            Maqueta visual: el formulario no guarda datos en una base de datos.
+          </p>
+        </form>
+      </section>
+    </main>
+    <footer class="footer-note">
+      © Comercializadora Marca · Gestión de proveedores
+    </footer>
+  </body>
+</html>
