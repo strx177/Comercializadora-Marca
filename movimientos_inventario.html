@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimientos de inventario | Comercializadora Marca</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilo_movimientos_inventario.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+    <!-- Barra superior -->
+    <header class="topbar">
+        <a href="#" class="brand">
+            <div class="brand-mark">M</div>
+            <div class="brand-name">
+                <span>Comercializadora</span>
+                <strong>MARCA</strong>
+            </div>
+        </a>
+
+        <div class="user-menu">
+            <span>Administrador</span>
+            <div class="user-avatar">AD</div>
+            <span class="dropdown-caret"></span>
+        </div>
+    </header>
+
+    <!-- Menú lateral -->
+    <aside class="sidebar">
+        <nav class="nav flex-column">
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">⌂</span>
+                Inicio
+            </a>
+
+            <div class="nav-group-label">Gestión comercial</div>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">▣</span>
+                Productos
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">☷</span>
+                Listar productos
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">＋</span>
+                Registrar producto
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">🛒</span>
+                Ventas
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">▤</span>
+                Historial de ventas
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">▦</span>
+                Inventario
+            </a>
+
+            <a href="#" class="nav-link active">
+                <span class="nav-icon">↕</span>
+                Movimientos de inventario
+            </a>
+
+            <div class="nav-group-label">Administración</div>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">♙</span>
+                Clientes
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">♧</span>
+                Proveedores
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">▥</span>
+                Reportes
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">⚙</span>
+                Configuración
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="status-dot"></span>
+            <span>Sistema de gestión</span>
+            <small>Comercializadora Marca</small>
+        </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+        <!-- Encabezado -->
+        <section class="page-heading">
+            <div class="heading-icon">↕</div>
+
+            <div>
+                <div class="eyebrow">INVENTARIO / MOVIMIENTOS</div>
+                <h1>Movimientos de inventario</h1>
+                <p>Consulta las entradas, salidas y ajustes de stock registrados en el sistema</p>
+            </div>
+        </section>
+
+        <!-- Indicadores -->
+        <section class="summary-grid">
+
+            <article class="summary-card">
+                <div class="summary-icon summary-icon-yellow">↓</div>
+                <div class="summary-info">
+                    <span class="summary-label">Entradas registradas</span>
+                    <strong class="summary-value">24</strong>
+                    <span class="summary-description">Ingresos de productos al inventario</span>
+                </div>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon summary-icon-orange">↑</div>
+                <div class="summary-info">
+                    <span class="summary-label">Salidas registradas</span>
+                    <strong class="summary-value">38</strong>
+                    <span class="summary-description">Disminuciones de stock registradas</span>
+                </div>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon summary-icon-red">↻</div>
+                <div class="summary-info">
+                    <span class="summary-label">Último movimiento</span>
+                    <strong class="summary-value summary-date">16 oct. 2026</strong>
+                    <span class="summary-description">10:35 hrs.</span>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Filtros -->
+        <section class="content-card filter-card">
+
+            <div class="card-heading">
+                <div>
+                    <h2>Buscar movimientos</h2>
+                    <p>Filtra el historial según el producto, el tipo de movimiento o la fecha</p>
+                </div>
+
+                <span class="form-step">
+                    <span class="step-dot"></span>
+                    Filtros de búsqueda
+                </span>
+            </div>
+
+            <form id="movement-filter-form">
+
+                <div class="row g-3">
+
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <label for="product-search" class="form-label">Producto</label>
+                        <div class="input-group input-with-icon">
+                            <span class="input-group-text">⌕</span>
+                            <input
+                                type="text"
+                                id="product-search"
+                                class="form-control"
+                                placeholder="Nombre o código del producto"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <label for="movement-type" class="form-label">Tipo de movimiento</label>
+                        <select id="movement-type" class="form-select">
+                            <option value="">Todos los movimientos</option>
+                            <option value="Entrada">Entrada</option>
+                            <option value="Salida">Salida</option>
+                            <option value="Ajuste">Ajuste de stock</option>
+                            <option value="Devolución">Devolución</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <label for="date-from" class="form-label">Fecha desde</label>
+                        <input type="date" id="date-from" class="form-control">
+                    </div>
+
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <label for="date-to" class="form-label">Fecha hasta</label>
+                        <input type="date" id="date-to" class="form-control">
+                    </div>
+
+                </div>
+
+                <div class="filter-actions">
+                    <button type="submit" class="btn btn-search">
+                        <span>⌕</span>
+                        Buscar movimientos
+                    </button>
+
+                    <button type="reset" class="btn btn-clear">
+                        Limpiar filtros
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+        <!-- Historial de movimientos -->
+        <section class="content-card results-card">
+
+            <div class="card-heading results-heading">
+                <div>
+                    <h2>Historial de movimientos</h2>
+                    <p>Registro de los cambios realizados en las existencias de productos</p>
+                </div>
+
+                <span class="results-count">
+                    <strong id="results-count">7</strong> resultados
+                </span>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table movements-table align-middle">
+                    <thead>
+                        <tr>
+                            <th>ID movimiento</th>
+                            <th>Fecha y hora</th>
+                            <th>Producto</th>
+                            <th>Tipo</th>
+                            <th class="text-end">Cantidad</th>
+                            <th class="text-end">Stock anterior</th>
+                            <th class="text-end">Stock nuevo</th>
+                            <th>Responsable</th>
+                            <th>Observación</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="movements-table-body">
+
+                        <tr
+                            data-movement-id="MOV-007"
+                            data-product="Arroz grado 1"
+                            data-code="PROD-001"
+                            data-type="Entrada"
+                            data-date="2026-10-16"
+                        >
+                            <td><span class="movement-id">MOV-007</span></td>
+                            <td>
+                                <strong>16/10/2026</strong>
+                                <small>10:35 hrs.</small>
+                            </td>
+                            <td>
+                                <strong>Arroz grado 1</strong>
+                                <small>PROD-001</small>
+                            </td>
+                            <td><span class="movement-badge movement-entry">Entrada</span></td>
+                            <td class="text-end quantity-positive">+20</td>
+                            <td class="text-end stock-value">15</td>
+                            <td class="text-end stock-value">35</td>
+                            <td>Administrador</td>
+                            <td>Reposición de mercadería</td>
+                        </tr>
+
+                        <tr
+                            data-movement-id="MOV-006"
+                            data-product="Bebida cola 1.5 L"
+                            data-code="PROD-002"
+                            data-type="Salida"
+                            data-date="2026-10-16"
+                        >
+                            <td><span class="movement-id">MOV-006</span></td>
+                            <td>
+                                <strong>16/10/2026</strong>
+                                <small>10:12 hrs.</small>
+                            </td>
+                            <td>
+                                <strong>Bebida cola 1.5 L</strong>
+                                <small>PROD-002</small>
+                            </td>
+                            <td><span class="movement-badge movement-exit">Salida</span></td>
+                            <td class="text-end quantity-negative">-3</td>
+                            <td class="text-end stock-value">24</td>
+                            <td class="text-end stock-value">21</td>
+                            <td>Vendedor 01</td>
+                            <td>Venta registrada</td>
+                        </tr>
+
+                        <tr
+                            data-movement-id="MOV-005"
+                            data-product="Leche entera 1 L"
+                            data-code="PROD-003"
+                            data-type="Devolución"
+                            data-date="2026-10-15"
+                        >
+                            <td><span class="movement-id">MOV-005</span></td>
+                            <td>
+                                <strong>15/10/2026</strong>
+                                <small>18:20 hrs.</small>
+                            </td>
+                            <td>
+                                <strong>Leche entera 1 L</strong>
+                                <small>PROD-003</small>
+                            </td>
+                            <td><span class="movement-badge movement-return">Devolución</span></td>
+                            <td class="text-end quantity-positive">+2</td>
+                            <td class="text-end stock-value">10</td>
+                            <td class="text-end stock-value">12</td>
+                            <td>Administrador</td>
+                            <td>Devolución de productos</td>
+                        </tr>
+
+                        <tr
+                            data-movement-id="MOV-004"
+                            data-product="Azúcar 1 kg"
+                            data-code="PROD-004"
+                            data-type="Ajuste"
+                            data-date="2026-10-15"
+                        >
+                            <td><span class="movement-id">MOV-004</span></td>
+                            <td>
+                                <strong>15/10/2026</strong>
+                                <small>16:45 hrs.</small>
+                            </td>
+                            <td>
+                                <strong>Azúcar 1 kg</strong>
+                                <small>PROD-004</small>
+                            </td>
+                            <td><span class="movement-badge movement-adjustment">Ajuste</span></td>
+                            <td class="text-end quantity-negative">-1</td>
+                            <td class="text-end stock-value">18</td>
+                            <td class="text-end stock-value">17</td>
+                            <td>Administrador</td>
+                            <td>Corrección de inventario</td>
+                        </tr>
+
+                        <tr
+                            data-movement-id="MOV-003"
+                            data-product="Fideos 400 g"
+                            data-code="PROD-005"
+                            data-type="Entrada"
+                            data-date="2026-10-15"
+                        >
+                            <td><span class="movement-id">MOV-003</span></td>
+                            <td>
+                                <strong>15/10/2026</strong>
+                                <small>12:30 hrs.</small>
+                            </td>
+                            <td>
+                                <strong>Fideos 400 g</strong>
+                                <small>PROD-005</small>
+                            </td>
+                            <td><span class="movement-badge movement-entry">Entrada</span></td>
+                            <td class="text-end quantity-positive">+15</td>
+                            <td class="text-end stock-value">8</td>
+                            <td class="text-end stock-value">23</td>
+                            <td>Reponedor 01</td>
+                            <td>Recepción de proveedor</td>
+                        </tr>
+
+                        <tr
+                            data-movement-id="MOV-002"
+                            data-product="Aceite vegetal 1 L"
+                            data-code="PROD-006"
+                            data-type="Salida"
+                            data-date="2026-10-14"
+                        >
+                            <td><span class="movement-id">MOV-002</span></td>
+                            <td>
+                                <strong>14/10/2026</strong>
+                                <small>19:10 hrs.</small>
+                            </td>
+                            <td>
+                                <strong>Aceite vegetal 1 L</strong>
+                                <small>PROD-006</small>
+                            </td>
+                            <td><span class="movement-badge movement-exit">Salida</span></td>
+                            <td class="text-end quantity-negative">-2</td>
+                            <td class="text-end stock-value">16</td>
+                            <td class="text-end stock-value">14</td>
+                            <td>Vendedor 01</td>
+                            <td>Venta registrada</td>
+                        </tr>
+
+                        <tr
+                            data-movement-id="MOV-001"
+                            data-product="Sal fina 1 kg"
+                            data-code="PROD-007"
+                            data-type="Entrada"
+                            data-date="2026-10-14"
+                        >
+                            <td><span class="movement-id">MOV-001</span></td>
+                            <td>
+                                <strong>14/10/2026</strong>
+                                <small>11:05 hrs.</small>
+                            </td>
+                            <td>
+                                <strong>Sal fina 1 kg</strong>
+                                <small>PROD-007</small>
+                            </td>
+                            <td><span class="movement-badge movement-entry">Entrada</span></td>
+                            <td class="text-end quantity-positive">+10</td>
+                            <td class="text-end stock-value">5</td>
+                            <td class="text-end stock-value">15</td>
+                            <td>Reponedor 01</td>
+                            <td>Reposición de mercadería</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mensaje sin resultados -->
+            <div id="empty-state" class="empty-state" hidden>
+                <div class="empty-state-icon">⌕</div>
+                <strong>No se encontraron movimientos</strong>
+                <p>Prueba con otros filtros para encontrar registros</p>
+            </div>
+
+            <!-- Pie de tabla -->
+            <div class="table-footer">
+                <span id="table-info">Mostrando 7 movimientos de ejemplo</span>
+
+                <nav aria-label="Paginación de movimientos">
+                    <ul class="pagination pagination-custom">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Página anterior">‹</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#" aria-current="page">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Página siguiente">›</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </section>
+
+        <!-- Nota informativa -->
+        <section class="inventory-note">
+            <div class="note-icon">i</div>
+            <div>
+                <strong>Sobre los movimientos de inventario</strong>
+                <p>
+                    Cada movimiento representa un cambio en las existencias de un producto.
+                    Las entradas aumentan el stock y las salidas lo disminuyen. Los ajustes
+                    permiten registrar diferencias detectadas durante la revisión del inventario.
+                </p>
+            </div>
+        </section>
+
+        <!-- Pie de página -->
+        <footer class="page-footer">
+            <span>© 2026 <strong>Comercializadora Marca</strong></span>
+            <span>Gestión de ventas e inventario</span>
+        </footer>
+
+    </main>
+</div>
+
+<script>
+    const filterForm = document.getElementById("movement-filter-form");
+    const productSearch = document.getElementById("product-search");
+    const movementType = document.getElementById("movement-type");
+    const dateFrom = document.getElementById("date-from");
+    const dateTo = document.getElementById("date-to");
+    const tableBody = document.getElementById("movements-table-body");
+    const rows = Array.from(tableBody.querySelectorAll("tr"));
+    const resultsCount = document.getElementById("results-count");
+    const tableInfo = document.getElementById("table-info");
+    const emptyState = document.getElementById("empty-state");
+
+    function filterMovements() {
+        const productQuery = productSearch.value.trim().toLowerCase();
+        const selectedType = movementType.value;
+        const from = dateFrom.value;
+        const to = dateTo.value;
+
+        let visibleCount = 0;
+
+        rows.forEach(row => {
+            const product = row.dataset.product.toLowerCase();
+            const code = row.dataset.code.toLowerCase();
+            const type = row.dataset.type;
+            const date = row.dataset.date;
+
+            const matchesProduct =
+                !productQuery ||
+                product.includes(productQuery) ||
+                code.includes(productQuery);
+
+            const matchesType = !selectedType || type === selectedType;
+            const matchesFrom = !from || date >= from;
+            const matchesTo = !to || date <= to;
+
+            const visible =
+                matchesProduct &&
+                matchesType &&
+                matchesFrom &&
+                matchesTo;
+
+            row.hidden = !visible;
+
+            if (visible) {
+                visibleCount++;
+            }
+        });
+
+        resultsCount.textContent = visibleCount;
+        tableInfo.textContent =
+            `Mostrando ${visibleCount} movimiento(s) de ejemplo`;
+
+        emptyState.hidden = visibleCount !== 0;
+    }
+
+    filterForm.addEventListener("submit", event => {
+        event.preventDefault();
+        filterMovements();
+    });
+
+    filterForm.addEventListener("reset", () => {
+        setTimeout(filterMovements, 0);
+    });
+
+    document.querySelectorAll(".pagination-custom .page-link").forEach(link => {
+        link.addEventListener("click", event => {
+            event.preventDefault();
+        });
+    });
+</script>
+
+</body>
+</html>
