@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar stock | Comercializadora Marca</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilo_consultar_stock.css">
+</head>
+<body>
+    <header class="topbar">
+        <a href="#" class="brand" aria-label="Comercializadora Marca, inicio">
+            <span class="brand-mark">M</span>
+            <span class="brand-text">
+                <span>Comercializadora</span>
+                <strong>MARCA</strong>
+            </span>
+        </a>
+
+        <div class="topbar-user">
+            <div class="user-info text-end">
+                <strong>Administrador</strong>
+                <span>Gestión del sistema</span>
+            </div>
+            <div class="user-avatar" aria-hidden="true">A</div>
+        </div>
+    </header>
+
+    <aside class="sidebar" aria-label="Navegación principal">
+        <div class="nav-section-title">Menú principal</div>
+        <nav>
+            <a href="#" class="nav-link">
+                <i class="bi bi-speedometer2" aria-hidden="true"></i>
+                <span>Panel principal</span>
+            </a>
+            <a href="#" class="nav-link">
+                <i class="bi bi-cart3" aria-hidden="true"></i>
+                <span>Registrar venta</span>
+            </a>
+            <a href="#" class="nav-link">
+                <i class="bi bi-box-seam" aria-hidden="true"></i>
+                <span>Productos</span>
+            </a>
+            <a href="registrar_producto.html" class="nav-link">
+                <i class="bi bi-plus-square" aria-hidden="true"></i>
+                <span>Registrar producto</span>
+            </a>
+            <a href="#" class="nav-link active" aria-current="page">
+                <i class="bi bi-boxes" aria-hidden="true"></i>
+                <span>Consultar stock</span>
+            </a>
+            <a href="movimientos_inventario.html" class="nav-link">
+                <i class="bi bi-arrow-left-right" aria-hidden="true"></i>
+                <span>Movimientos de inventario</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-divider"></div>
+        <div class="nav-section-title">Administración</div>
+        <nav>
+            <a href="#" class="nav-link">
+                <i class="bi bi-people" aria-hidden="true"></i>
+                <span>Usuarios</span>
+            </a>
+            <a href="#" class="nav-link">
+                <i class="bi bi-truck" aria-hidden="true"></i>
+                <span>Proveedores</span>
+            </a>
+            <a href="#" class="nav-link">
+                <i class="bi bi-gear" aria-hidden="true"></i>
+                <span>Configuración</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="breadcrumb-text">
+            Inicio <span>/</span> Inventario <span>/</span>
+            <strong>Consultar stock</strong>
+        </div>
+
+        <section class="page-heading">
+            <div class="heading-main">
+                <div class="heading-icon"><i class="bi bi-boxes" aria-hidden="true"></i></div>
+                <div>
+                    <h1>Consultar stock</h1>
+                    <p>Revisa las existencias disponibles de cada producto</p>
+                </div>
+            </div>
+            <span class="demo-label"><i class="bi bi-info-circle" aria-hidden="true"></i> Datos de demostración</span>
+        </section>
+
+        <section class="summary-grid" aria-label="Resumen de existencias">
+            <article class="summary-card">
+                <div class="summary-icon total"><i class="bi bi-box-seam" aria-hidden="true"></i></div>
+                <div>
+                    <div class="summary-label">Productos registrados</div>
+                    <div class="summary-number" id="totalProducts">0</div>
+                </div>
+            </article>
+            <article class="summary-card">
+                <div class="summary-icon low"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i></div>
+                <div>
+                    <div class="summary-label">Stock bajo</div>
+                    <div class="summary-number" id="lowStockProducts">0</div>
+                </div>
+            </article>
+            <article class="summary-card">
+                <div class="summary-icon empty"><i class="bi bi-dash-circle" aria-hidden="true"></i></div>
+                <div>
+                    <div class="summary-label">Sin existencias</div>
+                    <div class="summary-number" id="outOfStockProducts">0</div>
+                </div>
+            </article>
+        </section>
+
+        <section class="content-grid">
+            <article class="panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>Existencias por producto</h2>
+                        <p>Busca por nombre, código interno o categoría</p>
+                    </div>
+                    <span class="product-count" id="visibleCount" aria-live="polite">0 productos</span>
+                </div>
+
+                <div class="panel-body">
+                    <div class="search-box">
+                        <i class="bi bi-search" aria-hidden="true"></i>
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Buscar producto o código..."
+                            aria-label="Buscar producto por nombre, código o categoría"
+                        >
+                    </div>
+
+                    <div class="filter-row" role="group" aria-label="Filtrar por disponibilidad">
+                        <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">Todos</button>
+                        <button type="button" class="filter-btn" data-filter="available" aria-pressed="false">Disponible</button>
+                        <button type="button" class="filter-btn" data-filter="low" aria-pressed="false">Stock bajo</button>
+                        <button type="button" class="filter-btn" data-filter="empty" aria-pressed="false">Agotado</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="product-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Categoría</th>
+                                    <th scope="col" class="text-end">Existencias</th>
+                                    <th scope="col">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel detail-panel" aria-labelledby="detailHeading">
+                <div class="panel-header">
+                    <div>
+                        <h2 id="detailHeading">Detalle de existencias</h2>
+                        <p>Información del producto seleccionado</p>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="selection-placeholder hidden" id="selectionPlaceholder" aria-live="polite">
+                        <i class="bi bi-box2" aria-hidden="true"></i>
+                        <strong>Selecciona un producto</strong>
+                        <p>Elige un artículo del listado para consultar su stock y nivel mínimo.</p>
+                    </div>
+
+                    <div id="productDetails" aria-live="polite">
+                        <div class="product-detail-top">
+                            <div class="product-detail-icon"><i class="bi bi-box-seam" aria-hidden="true"></i></div>
+                            <div class="product-detail-heading">
+                                <h3 id="selectedName"></h3>
+                                <p id="selectedCode"></p>
+                            </div>
+                        </div>
+
+                        <div class="stock-total">
+                            <span class="field-caption">Existencias actuales</span>
+                            <div class="stock-total-value">
+                                <strong id="selectedStock"></strong>
+                                <span>unidades</span>
+                            </div>
+                            <div class="stock-meter" id="stockMeter" role="progressbar" aria-label="Nivel de stock" aria-valuemin="0" aria-valuemax="100">
+                                <span id="stockMeterFill"></span>
+                            </div>
+                            <div class="meter-caption" id="meterCaption"></div>
+                        </div>
+
+                        <div class="detail-grid">
+                            <div class="data-item">
+                                <span class="field-caption">Categoría</span>
+                                <strong id="selectedCategory"></strong>
+                            </div>
+                            <div class="data-item">
+                                <span class="field-caption">Stock mínimo</span>
+                                <strong id="selectedMinimum"></strong>
+                            </div>
+                            <div class="data-item data-item-wide">
+                                <span class="field-caption">Estado del inventario</span>
+                                <strong id="selectedStatus"></strong>
+                            </div>
+                        </div>
+
+                        <a class="history-link" href="movimientos_inventario.html">
+                            <i class="bi bi-clock-history" aria-hidden="true"></i>
+                            Ver movimientos de inventario
+                            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script>
+        const products = [
+            { id: 1, name: "Arroz grado 1", code: "PROD-001", category: "Abarrotes", stock: 35, minimum: 10 },
+            { id: 2, name: "Bebida cola 1,5 L", code: "PROD-002", category: "Bebidas", stock: 21, minimum: 10 },
+            { id: 3, name: "Leche entera 1 L", code: "PROD-003", category: "Lácteos", stock: 12, minimum: 15 },
+            { id: 4, name: "Azúcar granulada 1 kg", code: "PROD-004", category: "Abarrotes", stock: 17, minimum: 10 },
+            { id: 5, name: "Fideos espagueti 400 g", code: "PROD-005", category: "Pastas", stock: 23, minimum: 10 },
+            { id: 6, name: "Aceite vegetal 1 L", code: "PROD-006", category: "Abarrotes", stock: 14, minimum: 15 },
+            { id: 7, name: "Sal fina 1 kg", code: "PROD-007", category: "Abarrotes", stock: 15, minimum: 12 },
+            { id: 8, name: "Harina sin polvos 1 kg", code: "PROD-008", category: "Abarrotes", stock: 0, minimum: 8 }
+        ];
+
+        let selectedProductId = products[0].id;
+        let currentFilter = "all";
+
+        const productTableBody = document.getElementById("productTableBody");
+        const searchInput = document.getElementById("searchInput");
+
+        function getStockStatus(product) {
+            if (product.stock === 0) return "empty";
+            if (product.stock <= product.minimum) return "low";
+            return "available";
+        }
+
+        function getStatusLabel(status) {
+            return {
+                available: "Disponible",
+                low: "Stock bajo",
+                empty: "Agotado"
+            }[status];
+        }
+
+        function escapeHTML(value) {
+            return String(value).replace(/[&<>"']/g, character => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            })[character]);
+        }
+
+        function updateSummary() {
+            document.getElementById("totalProducts").textContent = products.length;
+            document.getElementById("lowStockProducts").textContent =
+                products.filter(product => getStockStatus(product) === "low").length;
+            document.getElementById("outOfStockProducts").textContent =
+                products.filter(product => getStockStatus(product) === "empty").length;
+        }
+
+        function getFilteredProducts() {
+            const query = searchInput.value.trim().toLocaleLowerCase("es");
+
+            return products.filter(product => {
+                const matchesQuery = [product.name, product.code, product.category]
+                    .some(value => value.toLocaleLowerCase("es").includes(query));
+                const matchesFilter = currentFilter === "all" || getStockStatus(product) === currentFilter;
+                return matchesQuery && matchesFilter;
+            });
+        }
+
+        function renderProducts() {
+            const filteredProducts = getFilteredProducts();
+            document.getElementById("visibleCount").textContent =
+                `${filteredProducts.length} ${filteredProducts.length === 1 ? "producto" : "productos"}`;
+
+            if (filteredProducts.length === 0) {
+                productTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="4" class="empty-state">
+                            <i class="bi bi-search" aria-hidden="true"></i>
+                            No se encontraron productos
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            productTableBody.innerHTML = filteredProducts.map(product => {
+                const status = getStockStatus(product);
+                const isSelected = product.id === selectedProductId;
+
+                return `
+                    <tr class="${isSelected ? "selected" : ""}">
+                        <td>
+                            <button type="button" class="product-select-btn" data-id="${product.id}" ${isSelected ? 'aria-current="true"' : ""}>
+                                <span class="product-name">${escapeHTML(product.name)}</span>
+                                <span class="product-code">${escapeHTML(product.code)}</span>
+                            </button>
+                        </td>
+                        <td>${escapeHTML(product.category)}</td>
+                        <td class="text-end stock-cell">${product.stock}</td>
+                        <td><span class="status-badge ${status}">${getStatusLabel(status)}</span></td>
+                    </tr>
+                `;
+            }).join("");
+
+            productTableBody.querySelectorAll(".product-select-btn").forEach(button => {
+                button.addEventListener("click", () => selectProduct(Number(button.dataset.id)));
+            });
+        }
+
+        function selectProduct(id) {
+            const product = products.find(item => item.id === id);
+            if (!product) return;
+
+            selectedProductId = id;
+            const status = getStockStatus(product);
+            const capacity = Math.max(product.minimum * 2, product.stock, 1);
+            const percentage = Math.min(100, Math.round((product.stock / capacity) * 100));
+
+            document.getElementById("selectionPlaceholder").classList.add("hidden");
+            document.getElementById("productDetails").classList.remove("hidden");
+            document.getElementById("selectedName").textContent = product.name;
+            document.getElementById("selectedCode").textContent = `Código interno: ${product.code}`;
+            document.getElementById("selectedStock").textContent = product.stock;
+            document.getElementById("selectedCategory").textContent = product.category;
+            document.getElementById("selectedMinimum").textContent = `${product.minimum} unidades`;
+
+            const statusElement = document.getElementById("selectedStatus");
+            statusElement.textContent = getStatusLabel(status);
+            statusElement.className = `detail-status ${status}`;
+
+            const meter = document.getElementById("stockMeter");
+            meter.setAttribute("aria-valuenow", percentage);
+            meter.setAttribute("aria-valuetext", `${percentage}% del nivel de referencia`);
+            document.getElementById("stockMeterFill").style.width = `${percentage}%`;
+            document.getElementById("stockMeterFill").className = status;
+            document.getElementById("meterCaption").textContent =
+                status === "empty" ? "Requiere reposición" : `${product.stock} de ${capacity} unidades de referencia`;
+
+            renderProducts();
+        }
+
+        searchInput.addEventListener("input", renderProducts);
+
+        document.querySelectorAll(".filter-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                currentFilter = button.dataset.filter;
+                document.querySelectorAll(".filter-btn").forEach(filterButton => {
+                    const isActive = filterButton === button;
+                    filterButton.classList.toggle("active", isActive);
+                    filterButton.setAttribute("aria-pressed", String(isActive));
+                });
+                renderProducts();
+            });
+        });
+
+        updateSummary();
+        selectProduct(selectedProductId);
+    </script>
+</body>
+</html>
