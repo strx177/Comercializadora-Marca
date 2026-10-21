@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Modificar datos del producto | Comercializadora Marca</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Estilos propios del sistema -->
+    <link href="estilo_modificar_producto.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Comercializadora Marca, inicio">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span class="brand-name">
+            <span>Comercializadora</span>
+            <strong>MARCA</strong>
+          </span>
+        </a>
+
+        <div class="user-menu">
+          <span class="user-avatar" aria-hidden="true">U</span>
+          <span>Usuario</span>
+          <span class="dropdown-caret" aria-hidden="true"></span>
+        </div>
+      </header>
+
+      <aside class="sidebar" aria-label="Navegación principal">
+        <nav class="nav flex-column">
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">⌂</span><span>Inicio</span></a
+          >
+
+          <div class="nav-group-label">Gestión comercial</div>
+          <a class="nav-link active" href="#"
+            ><span class="nav-icon">▣</span><span>Productos</span></a
+          >
+          <a class="nav-link nav-subitem" href="#"
+            ><span class="nav-icon">☷</span><span>Listar productos</span></a
+          >
+          <a
+            class="nav-link nav-subitem current-page"
+            href="#"
+            aria-current="page"
+            ><span class="nav-icon">✎</span><span>Modificar producto</span></a
+          >
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">🛒</span><span>Ventas</span></a
+          >
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">▤</span><span>Inventario</span></a
+          >
+
+          <div class="nav-group-label">Administración</div>
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">♙</span><span>Clientes</span></a
+          >
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">▰</span><span>Proveedores</span></a
+          >
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">▥</span><span>Reportes</span></a
+          >
+          <a class="nav-link" href="#"
+            ><span class="nav-icon">⚙</span><span>Configuración</span></a
+          >
+        </nav>
+
+        <div class="sidebar-footer">
+          <span class="status-dot"></span>
+          Sistema de gestión
+          <small>Comercializadora Marca</small>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div class="page-heading">
+          <div class="heading-icon" aria-hidden="true">▦</div>
+          <div>
+            <div class="eyebrow">PRODUCTOS / MODIFICACIÓN</div>
+            <h1>Modificar datos del producto</h1>
+            <p>Actualiza la información del producto seleccionado</p>
+          </div>
+        </div>
+
+        <section class="form-card" aria-labelledby="form-title">
+          <div class="card-heading">
+            <div>
+              <h2 id="form-title">Información del producto</h2>
+              <p>
+                Los campos marcados con <span class="required-mark">*</span> son
+                obligatorios.
+              </p>
+            </div>
+            <span class="form-step"
+              ><span class="step-dot"></span> Edición de producto</span
+            >
+          </div>
+
+          <form action="#" method="post">
+            <div class="row g-4">
+              <div class="col-12 col-xl-7">
+                <div class="mb-4">
+                  <label for="barcode" class="form-label"
+                    >Código de barras
+                    <span class="required-mark">*</span></label
+                  >
+                  <div class="input-group input-with-icon">
+                    <span class="input-group-text" aria-hidden="true">▥</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="barcode"
+                      name="barcode"
+                      value="7801234567890"
+                      placeholder="Código de barras"
+                      required
+                    />
+                    <button
+                      class="btn btn-outline-primary scan-button"
+                      type="button"
+                    >
+                      Escanear
+                    </button>
+                  </div>
+                  <div class="field-help">
+                    Puedes actualizar el código de barras si corresponde.
+                  </div>
+                  <div class="associate-row">
+                    <span class="associate-line"></span>
+                    <span>o</span>
+                    <span class="associate-line"></span>
+                  </div>
+                  <button
+                    class="btn btn-light associate-button w-100"
+                    type="button"
+                  >
+                    <span aria-hidden="true">↗</span> Buscar otro producto
+                  </button>
+                </div>
+
+                <div class="mb-4">
+                  <label for="product-name" class="form-label"
+                    >Nombre del producto
+                    <span class="required-mark">*</span></label
+                  >
+                  <div class="input-group input-with-icon">
+                    <span class="input-group-text" aria-hidden="true">◇</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="product-name"
+                      name="product_name"
+                      value="Arroz grado 1, 1 kg"
+                      placeholder="Nombre del producto"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label for="description" class="form-label"
+                    >Descripción</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="description"
+                    name="description"
+                    rows="4"
+                    placeholder="Agrega detalles útiles para identificar el producto"
+                  >
+Arroz blanco grado 1 en formato de 1 kg.</textarea
+                  >
+                </div>
+
+                <div class="mb-2">
+                  <label for="category" class="form-label"
+                    >Categoría <span class="required-mark">*</span></label
+                  >
+                  <select
+                    class="form-select"
+                    id="category"
+                    name="category"
+                    required
+                  >
+                    <option value="" disabled>Selecciona una categoría</option>
+                    <option selected>Abarrotes</option>
+                    <option>Bebidas</option>
+                    <option>Lácteos y refrigerados</option>
+                    <option>Aseo del hogar</option>
+                    <option>Cuidado personal</option>
+                    <option>Snacks y confites</option>
+                    <option>Otros</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-12 col-xl-5">
+                <div class="price-panel">
+                  <label for="price" class="form-label"
+                    >Precio de venta <span class="required-mark">*</span></label
+                  >
+                  <div class="input-group input-with-icon price-input">
+                    <span class="input-group-text">$</span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="price"
+                      name="price"
+                      min="0"
+                      step="1"
+                      value="1290"
+                      placeholder="0"
+                      required
+                    />
+                    <span class="input-group-text currency">CLP</span>
+                  </div>
+                  <div class="field-help">
+                    Modifica el precio final de venta en pesos chilenos.
+                  </div>
+                </div>
+
+                <div class="product-note">
+                  <div class="note-icon" aria-hidden="true">i</div>
+                  <div>
+                    <strong>Antes de guardar los cambios</strong>
+                    <p>
+                      Verifica que los datos actualizados sean correctos antes
+                      de confirmar los cambios.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="preview-card">
+                  <div class="preview-topline">
+                    <span>VISTA PREVIA</span>
+                    <span class="preview-status">En edición</span>
+                  </div>
+                  <div class="preview-product-icon" aria-hidden="true">▦</div>
+                  <strong id="preview-name">Arroz grado 1, 1 kg</strong>
+                  <span id="preview-category">Abarrotes</span>
+                  <div class="preview-price" id="preview-price">$ 1.290</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <a href="#" class="btn btn-cancel">Cancelar</a>
+              <button type="reset" class="btn btn-reset">Restablecer</button>
+              <button type="submit" class="btn btn-save">
+                <span aria-hidden="true">▣</span> Guardar cambios
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <footer class="page-footer">
+          <span>Comercializadora Marca</span>
+          <span>Modificación de productos</span>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar producto por peso | Comercializadora Marca</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilo_registrar_producto_peso.css">
+</head>
+<body>
+    <header class="topbar">
+        <a href="#" class="brand" aria-label="Comercializadora Marca, inicio">
+            <span class="brand-mark">M</span>
+            <span class="brand-text">
+                <span>Comercializadora</span>
+                <strong>MARCA</strong>
+            </span>
+        </a>
+
+        <div class="topbar-user">
+            <div class="user-info text-end">
+                <strong>Administrador</strong>
+                <span>Gestión del sistema</span>
+            </div>
+            <div class="user-avatar" aria-hidden="true">A</div>
+        </div>
+    </header>
+
+    <aside class="sidebar" aria-label="Navegación principal">
+        <div class="nav-section-title">Menú principal</div>
+        <nav>
+            <a href="#" class="nav-link">
+                <i class="bi bi-speedometer2" aria-hidden="true"></i>
+                <span>Panel principal</span>
+            </a>
+            <a href="#" class="nav-link">
+                <i class="bi bi-cart3" aria-hidden="true"></i>
+                <span>Registrar venta</span>
+            </a>
+            <a href="buscar_productos.html" class="nav-link">
+                <i class="bi bi-search" aria-hidden="true"></i>
+                <span>Buscar productos</span>
+            </a>
+            <a href="registrar_producto.html" class="nav-link active" aria-current="page">
+                <i class="bi bi-plus-square" aria-hidden="true"></i>
+                <span>Registrar producto</span>
+            </a>
+            <a href="consultar_stock.html" class="nav-link">
+                <i class="bi bi-boxes" aria-hidden="true"></i>
+                <span>Consultar stock</span>
+            </a>
+            <a href="movimientos_inventario.html" class="nav-link">
+                <i class="bi bi-arrow-left-right" aria-hidden="true"></i>
+                <span>Movimientos de inventario</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-divider"></div>
+        <div class="nav-section-title">Administración</div>
+        <nav>
+            <a href="#" class="nav-link">
+                <i class="bi bi-people" aria-hidden="true"></i>
+                <span>Usuarios</span>
+            </a>
+            <a href="#" class="nav-link">
+                <i class="bi bi-truck" aria-hidden="true"></i>
+                <span>Proveedores</span>
+            </a>
+            <a href="#" class="nav-link">
+                <i class="bi bi-gear" aria-hidden="true"></i>
+                <span>Configuración</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="breadcrumb-text">
+            Inicio <span>/</span> Productos <span>/</span>
+            <strong>Producto por peso</strong>
+        </div>
+
+        <section class="page-heading">
+            <div class="heading-main">
+                <div class="heading-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></div>
+                <div>
+                    <h1>Registrar producto por peso</h1>
+                    <p>Define el precio por kilogramo y controla existencias fraccionarias</p>
+                </div>
+            </div>
+            <span class="demo-label"><i class="bi bi-info-circle" aria-hidden="true"></i> Vista de demostración</span>
+        </section>
+
+        <div class="form-layout">
+            <form class="panel product-form" id="productWeightForm">
+                <div class="panel-header">
+                    <div>
+                        <h2>Información del producto</h2>
+                        <p>Completa los datos para incorporarlo al inventario</p>
+                    </div>
+                    <span class="required-note"><span class="required-mark">*</span> Obligatorio</span>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-heading">
+                        <span class="section-icon"><i class="bi bi-tag" aria-hidden="true"></i></span>
+                        <div>
+                            <h3>Identificación</h3>
+                            <p>Datos para reconocer el producto</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="field-group">
+                            <label class="form-label" for="productName">Nombre del producto <span class="required-mark">*</span></label>
+                            <input class="form-control" id="productName" name="name" type="text" placeholder="Ej. Queso mantecoso" autocomplete="off" required>
+                        </div>
+                        <div class="field-group">
+                            <label class="form-label" for="category">Categoría <span class="required-mark">*</span></label>
+                            <select class="form-select" id="category" name="category" required>
+                                <option value="" selected disabled>Selecciona una categoría</option>
+                                <option>Lácteos y refrigerados</option>
+                                <option>Fiambres y embutidos</option>
+                                <option>Abarrotes</option>
+                                <option>Frutas y verduras</option>
+                                <option>Carnes</option>
+                                <option>Otros</option>
+                            </select>
+                        </div>
+                        <div class="field-group field-full">
+                            <label class="form-label" for="barcode">Código de barras <span class="optional-label">Opcional</span></label>
+                            <div class="input-with-icon">
+                                <i class="bi bi-upc" aria-hidden="true"></i>
+                                <input class="form-control" id="barcode" name="barcode" type="text" inputmode="numeric" placeholder="Ingresa el código si el producto tiene uno">
+                            </div>
+                            <span class="field-help">Puedes dejarlo vacío para productos cortados o pesados en el local.</span>
+                        </div>
+                        <div class="field-group field-full">
+                            <label class="form-label" for="description">Descripción <span class="optional-label">Opcional</span></label>
+                            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Marca, tipo o detalle útil para identificarlo"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-heading">
+                        <span class="section-icon section-icon-yellow"><i class="bi bi-currency-dollar" aria-hidden="true"></i></span>
+                        <div>
+                            <h3>Precio y costo</h3>
+                            <p>Los valores se expresan por kilogramo</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="field-group">
+                            <label class="form-label" for="costPerKg">Costo por kilogramo <span class="optional-label">Opcional</span></label>
+                            <div class="input-group money-input">
+                                <span class="input-group-text">$</span>
+                                <input class="form-control" id="costPerKg" name="cost_per_kg" type="number" min="0" step="1" placeholder="0">
+                                <span class="input-group-text currency">CLP / kg</span>
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <label class="form-label" for="pricePerKg">Precio de venta por kilogramo <span class="required-mark">*</span></label>
+                            <div class="input-group money-input">
+                                <span class="input-group-text">$</span>
+                                <input class="form-control" id="pricePerKg" name="price_per_kg" type="number" min="1" step="1" placeholder="0" required>
+                                <span class="input-group-text currency">CLP / kg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="margin-note" id="marginNote" aria-live="polite">
+                        <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+                        <span>Ingresa costo y precio de venta para estimar el margen.</span>
+                    </div>
+                </div>
+
+                <div class="form-section form-section-last">
+                    <div class="section-heading">
+                        <span class="section-icon section-icon-green"><i class="bi bi-box-seam" aria-hidden="true"></i></span>
+                        <div>
+                            <h3>Existencias iniciales</h3>
+                            <p>Registra el peso disponible al ingresar el producto</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="field-group">
+                            <label class="form-label" for="initialStock">Stock inicial <span class="required-mark">*</span></label>
+                            <div class="input-group quantity-input">
+                                <input class="form-control" id="initialStock" name="initial_stock_kg" type="text" inputmode="decimal" placeholder="Ej. 2,500" value="0" required>
+                                <span class="input-group-text">kg</span>
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <label class="form-label" for="minimumStock">Avisar cuando queden menos de</label>
+                            <div class="input-group quantity-input">
+                                <input class="form-control" id="minimumStock" name="minimum_stock_kg" type="text" inputmode="decimal" placeholder="Ej. 0,500" value="0,500">
+                                <span class="input-group-text">kg</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-note">
+                        <i class="bi bi-info-circle" aria-hidden="true"></i>
+                        <span>El stock se controla en kilogramos. Usa decimales para registrar fracciones, por ejemplo 0,250 kg.</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="buscar_productos.html" class="btn-cancel">Cancelar</a>
+                    <button type="reset" class="btn-reset"><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i> Limpiar campos</button>
+                    <button type="submit" class="btn-save"><i class="bi bi-check2" aria-hidden="true"></i> Guardar producto</button>
+                </div>
+            </form>
+
+            <aside class="preview-column" aria-label="Vista previa y precio estimado">
+                <section class="panel preview-panel">
+                    <div class="panel-header preview-panel-header">
+                        <div>
+                            <h2>Vista previa</h2>
+                            <p>Así aparecerá en el catálogo</p>
+                        </div>
+                        <span class="preview-status">Nuevo</span>
+                    </div>
+
+                    <div class="preview-body">
+                        <div class="preview-product-icon"><i class="bi bi-box2-heart" aria-hidden="true"></i></div>
+                        <span class="preview-category" id="previewCategory">Categoría sin seleccionar</span>
+                        <h3 id="previewName">Nombre del producto</h3>
+                        <span class="preview-unit">Venta por peso · precio por kg</span>
+                        <div class="preview-price" id="previewPrice">$0 <span>/ kg</span></div>
+                        <div class="preview-divider"></div>
+                        <div class="preview-detail">
+                            <span>Stock inicial</span>
+                            <strong id="previewStock">0 kg</strong>
+                        </div>
+                        <div class="preview-detail">
+                            <span>Código de barras</span>
+                            <strong id="previewBarcode">No registrado</strong>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="sample-card" aria-labelledby="sampleHeading">
+                    <div class="sample-icon"><i class="bi bi-scales" aria-hidden="true"></i></div>
+                    <div>
+                        <span class="sample-eyebrow">EQUIVALENCIA</span>
+                        <h2 id="sampleHeading">Precio estimado para 250 g</h2>
+                        <p>Un cuarto de kilo, calculado desde el precio por kg.</p>
+                        <strong id="quarterPrice">$0</strong>
+                    </div>
+                </section>
+
+                <div id="formMessage" class="form-message" role="status" aria-live="polite" hidden></div>
+            </aside>
+        </div>
+    </main>
+
+    <script>
+        const form = document.getElementById("productWeightForm");
+        const nameInput = document.getElementById("productName");
+        const categoryInput = document.getElementById("category");
+        const barcodeInput = document.getElementById("barcode");
+        const costInput = document.getElementById("costPerKg");
+        const priceInput = document.getElementById("pricePerKg");
+        const stockInput = document.getElementById("initialStock");
+        const minimumInput = document.getElementById("minimumStock");
+
+        function parseDecimal(value) {
+            const normalized = value.trim().replace(",", ".");
+            if (!normalized) return 0;
+            const number = Number(normalized);
+            return Number.isFinite(number) && number >= 0 ? number : 0;
+        }
+
+        function formatPrice(value) {
+            return new Intl.NumberFormat("es-CL", {
+                style: "currency",
+                currency: "CLP",
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+
+        function formatWeight(value) {
+            return `${new Intl.NumberFormat("es-CL", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 3
+            }).format(value)} kg`;
+        }
+
+        function updatePreview() {
+            const price = Number(priceInput.value) || 0;
+            const cost = Number(costInput.value) || 0;
+            const stock = parseDecimal(stockInput.value);
+            const name = nameInput.value.trim();
+            const category = categoryInput.value;
+
+            document.getElementById("previewName").textContent = name || "Nombre del producto";
+            document.getElementById("previewCategory").textContent = category || "Categoría sin seleccionar";
+            document.getElementById("previewPrice").innerHTML = `${formatPrice(price)} <span>/ kg</span>`;
+            document.getElementById("previewStock").textContent = formatWeight(stock);
+            document.getElementById("previewBarcode").textContent = barcodeInput.value.trim() || "No registrado";
+            document.getElementById("quarterPrice").textContent = formatPrice(Math.round(price / 4));
+
+            const marginNote = document.getElementById("marginNote");
+            if (price > 0 && cost > 0) {
+                const grossProfit = price - cost;
+                const margin = (grossProfit / price) * 100;
+                marginNote.classList.toggle("margin-negative", grossProfit < 0);
+                marginNote.innerHTML = `<i class="bi bi-graph-up-arrow" aria-hidden="true"></i><span>Margen bruto estimado: <strong>${margin.toFixed(1).replace(".", ",")}%</strong> (${formatPrice(grossProfit)} por kg)</span>`;
+            } else {
+                marginNote.classList.remove("margin-negative");
+                marginNote.innerHTML = '<i class="bi bi-graph-up-arrow" aria-hidden="true"></i><span>Ingresa costo y precio de venta para estimar el margen.</span>';
+            }
+        }
+
+        form.addEventListener("input", updatePreview);
+        form.addEventListener("change", updatePreview);
+        form.addEventListener("reset", () => window.setTimeout(updatePreview, 0));
+        form.addEventListener("submit", event => {
+            event.preventDefault();
+            const message = document.getElementById("formMessage");
+            message.textContent = "Formulario de demostración: el producto no se guardó en el inventario.";
+            message.hidden = false;
+        });
+
+        updatePreview();
+    </script>
+</body>
+</html>
