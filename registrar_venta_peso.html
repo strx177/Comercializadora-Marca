@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar venta | Comercializadora Marca</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilo_registrar_venta_peso.css">
+</head>
+<body>
+    <header class="topbar">
+        <a href="#" class="brand" aria-label="Comercializadora Marca, inicio">
+            <span class="brand-mark">M</span>
+            <span class="brand-text">
+                <span>Comercializadora</span>
+                <strong>MARCA</strong>
+            </span>
+        </a>
+
+        <div class="topbar-user">
+            <div class="user-info text-end">
+                <strong>Administrador</strong>
+                <span>Gestión del sistema</span>
+            </div>
+            <div class="user-avatar" aria-hidden="true">A</div>
+        </div>
+    </header>
+
+    <aside class="sidebar" aria-label="Navegación principal">
+        <div class="nav-section-title">Menú principal</div>
+        <nav>
+            <a href="#" class="nav-link">
+                <i class="bi bi-speedometer2" aria-hidden="true"></i>
+                <span>Panel principal</span>
+            </a>
+            <a href="registrar_venta_peso.html" class="nav-link active" aria-current="page">
+                <i class="bi bi-cart3" aria-hidden="true"></i>
+                <span>Registrar venta</span>
+            </a>
+            <a href="buscar_productos.html" class="nav-link">
+                <i class="bi bi-search" aria-hidden="true"></i>
+                <span>Buscar productos</span>
+            </a>
+            <a href="registrar_producto.html" class="nav-link">
+                <i class="bi bi-plus-square" aria-hidden="true"></i>
+                <span>Registrar producto</span>
+            </a>
+            <a href="consultar_stock.html" class="nav-link">
+                <i class="bi bi-boxes" aria-hidden="true"></i>
+                <span>Consultar stock</span>
+            </a>
+            <a href="movimientos_inventario.html" class="nav-link">
+                <i class="bi bi-arrow-left-right" aria-hidden="true"></i>
+                <span>Movimientos de inventario</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-divider"></div>
+        <div class="nav-section-title">Administración</div>
+        <nav>
+            <a href="#" class="nav-link">
+                <i class="bi bi-people" aria-hidden="true"></i>
+                <span>Usuarios</span>
+            </a>
+            <a href="#" class="nav-link">
+                <i class="bi bi-truck" aria-hidden="true"></i>
+                <span>Proveedores</span>
+            </a>
+            <a href="#" class="nav-link">
+                <i class="bi bi-gear" aria-hidden="true"></i>
+                <span>Configuración</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="breadcrumb-text">
+            Inicio <span>/</span> Ventas <span>/</span>
+            <strong>Registrar venta</strong>
+        </div>
+
+        <section class="page-heading">
+            <div class="heading-main">
+                <div class="heading-icon"><i class="bi bi-cart3" aria-hidden="true"></i></div>
+                <div>
+                    <h1>Registrar venta</h1>
+                    <p>Escanea productos por unidad o agrega artículos vendidos por peso</p>
+                </div>
+            </div>
+            <span class="demo-label"><i class="bi bi-info-circle" aria-hidden="true"></i> Venta de demostración</span>
+        </section>
+
+        <section class="sale-layout">
+            <div class="sale-left-column">
+                <section class="panel catalog-panel" aria-labelledby="scannerHeading">
+                    <div class="panel-header">
+                        <div>
+                            <h2 id="scannerHeading">Escanear producto</h2>
+                            <p>Escanea o ingresa el código de barras para agregar un producto por unidad</p>
+                        </div>
+                        <span class="scanner-state"><i class="bi bi-upc-scan" aria-hidden="true"></i> Lector activo</span>
+                    </div>
+
+                    <div class="scanner-body">
+                        <form class="scanner-form" id="productLookupForm">
+                            <label class="form-label" for="productCodeInput">Código de barras</label>
+                            <div class="scanner-input-row">
+                                <div class="scanner-input-wrap">
+                                    <i class="bi bi-upc" aria-hidden="true"></i>
+                                    <input id="productCodeInput" type="text" autocomplete="off" placeholder="Escanea o escribe el código" aria-describedby="scannerHelp" autofocus>
+                                </div>
+                                <button class="lookup-button" type="submit">
+                                    <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                                    Agregar
+                                </button>
+                            </div>
+                            <div class="scanner-help-row">
+                                <span id="scannerHelp">El lector puede escribir el código y enviarlo con Enter.</span>
+                                <span id="lookupMessage" class="lookup-message" role="status" aria-live="polite"></span>
+                            </div>
+                        </form>
+
+                        <div class="weight-list-header">
+                            <div>
+                                <h3>Productos vendidos por peso</h3>
+                                <p>Selecciona uno para indicar los gramos o kilogramos</p>
+                            </div>
+                            <span class="weight-list-count" id="weightProductCount">0 productos</span>
+                        </div>
+                        <div class="weight-product-list" id="weightProductList" aria-live="polite"></div>
+                    </div>
+                </section>
+
+                <section class="panel weight-panel" id="weightPanel" aria-labelledby="weightHeading" hidden>
+                    <div class="panel-header weight-panel-header">
+                        <div>
+                            <h2 id="weightHeading">Agregar por peso</h2>
+                            <p id="weightProductLabel">Selecciona la cantidad a vender</p>
+                        </div>
+                        <button class="close-weight" type="button" id="closeWeight" aria-label="Cerrar selección de peso" title="Cerrar">
+                            <i class="bi bi-x-lg" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                    <div class="weight-editor">
+                        <div class="weight-price-line">
+                            <span id="weightPriceLabel">Precio por kilogramo</span>
+                            <strong id="weightUnitPrice"></strong>
+                        </div>
+
+                        <div class="weight-entry-row">
+                            <div class="weight-input-group">
+                                <label for="weightAmount" class="form-label">Peso a vender</label>
+                                <div class="input-group weight-input-wrap">
+                                    <input id="weightAmount" class="form-control" type="text" inputmode="decimal" placeholder="Ej. 250" autocomplete="off">
+                                    <div class="unit-toggle" role="group" aria-label="Unidad de peso">
+                                        <button type="button" class="unit-button active" data-unit="g" aria-pressed="true">g</button>
+                                        <button type="button" class="unit-button" data-unit="kg" aria-pressed="false">kg</button>
+                                    </div>
+                                </div>
+                                <span class="field-help" id="weightAvailable"></span>
+                            </div>
+
+                            <div class="weight-estimate">
+                                <span>Subtotal</span>
+                                <strong id="weightEstimate">$0</strong>
+                            </div>
+                        </div>
+
+                        <div class="weight-error" id="weightError" role="alert" hidden></div>
+                        <div class="weight-actions">
+                            <button type="button" class="btn-add-weight" id="addWeightButton">
+                                <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                                Agregar al pedido
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="panel cart-panel" aria-labelledby="cartHeading">
+                <div class="panel-header cart-header">
+                    <div>
+                        <h2 id="cartHeading">Venta actual</h2>
+                        <p id="cartLineCount" aria-live="polite">Sin productos</p>
+                    </div>
+                    <button type="button" class="clear-cart-button" id="clearCartButton" aria-label="Vaciar venta" title="Vaciar venta" disabled>
+                        <i class="bi bi-trash3" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <div class="cart-content">
+                    <div class="cart-empty" id="cartEmpty">
+                        <i class="bi bi-basket2" aria-hidden="true"></i>
+                        <strong>La venta está vacía</strong>
+                        <span>Escanea un código o selecciona queso o jamón por peso.</span>
+                    </div>
+                    <div class="cart-items" id="cartItems"></div>
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary-line">
+                        <span>Subtotal</span>
+                        <strong id="subtotalValue">$0</strong>
+                    </div>
+                    <div class="summary-line total-line">
+                        <span>Total a pagar</span>
+                        <strong id="totalValue">$0</strong>
+                    </div>
+
+                    <div class="payment-method-field">
+                        <label class="form-label" for="paymentMethod">Medio de pago</label>
+                        <select class="form-select" id="paymentMethod">
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="Débito">Débito</option>
+                            <option value="Crédito">Crédito</option>
+                            <option value="Transferencia">Transferencia</option>
+                        </select>
+                    </div>
+
+                    <button class="complete-sale-button" id="completeSaleButton" type="button" disabled>
+                        <i class="bi bi-check2-circle" aria-hidden="true"></i>
+                        Registrar venta
+                    </button>
+                    <p class="demo-disclaimer">La venta es de demostración y no se guarda en el sistema.</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <div class="toast-message" id="toastMessage" role="status" aria-live="polite" hidden></div>
+
+    <script>
+        const products = [
+            { id: "rice", name: "Arroz grado 1", code: "PROD-001", barcode: "7801234567890", category: "Abarrotes", price: 1490, stock: 24, type: "unit", unitLabel: "unidad" },
+            { id: "oil", name: "Aceite vegetal 1 L", code: "PROD-002", barcode: "7801234567891", category: "Abarrotes", price: 2190, stock: 15, type: "unit", unitLabel: "unidad" },
+            { id: "milk", name: "Leche entera 1 L", code: "PROD-003", barcode: "7809876543210", category: "Lácteos", price: 1190, stock: 32, type: "unit", unitLabel: "unidad" },
+            { id: "pasta", name: "Fideos espagueti 400 g", code: "PROD-004", barcode: "7801122334455", category: "Pastas", price: 890, stock: 27, type: "unit", unitLabel: "unidad" },
+            { id: "cheese", name: "Queso mantecoso", code: "PROD-009", barcode: "PESO-001", category: "Lácteos", price: 8990, stock: 4.75, type: "weight", unitLabel: "kg" },
+            { id: "ham", name: "Jamón pierna", code: "PROD-010", barcode: "PESO-002", category: "Fiambres y embutidos", price: 10990, stock: 3.2, type: "weight", unitLabel: "kg" }
+        ];
+
+        let cart = [];
+        let selectedWeightProductId = null;
+        let selectedWeightUnit = "g";
+        let toastTimeout;
+
+        const productCodeInput = document.getElementById("productCodeInput");
+        const weightProductList = document.getElementById("weightProductList");
+        const weightAmountInput = document.getElementById("weightAmount");
+
+        function formatPrice(amount) {
+            return new Intl.NumberFormat("es-CL", {
+                style: "currency",
+                currency: "CLP",
+                maximumFractionDigits: 0
+            }).format(Math.round(amount));
+        }
+
+        function formatKg(amount) {
+            return new Intl.NumberFormat("es-CL", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 3
+            }).format(amount);
+        }
+
+        function parseDecimal(value) {
+            const normalized = value.trim().replace(",", ".");
+            if (!normalized) return 0;
+            const number = Number(normalized);
+            return Number.isFinite(number) && number > 0 ? number : 0;
+        }
+
+        function escapeHTML(value) {
+            return String(value).replace(/[&<>"']/g, character => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            })[character]);
+        }
+
+        function getProduct(productId) {
+            return products.find(product => product.id === productId);
+        }
+
+        function getInCartQuantity(productId, excludedLineId = null) {
+            return cart.reduce((total, line) => {
+                if (line.productId !== productId || line.id === excludedLineId) return total;
+                return total + (line.type === "unit" ? line.quantity : line.quantityKg);
+            }, 0);
+        }
+
+        function getAvailableStock(product, excludedLineId = null) {
+            return Math.max(0, product.stock - getInCartQuantity(product.id, excludedLineId));
+        }
+
+        function setLookupMessage(message, isError = false) {
+            const lookupMessage = document.getElementById("lookupMessage");
+            lookupMessage.textContent = message;
+            lookupMessage.classList.toggle("lookup-error", isError);
+        }
+
+        function renderWeightProducts() {
+            const weightedProducts = products.filter(product => product.type === "weight");
+            document.getElementById("weightProductCount").textContent =
+                `${weightedProducts.length} ${weightedProducts.length === 1 ? "producto" : "productos"}`;
+
+            weightProductList.innerHTML = weightedProducts.map(product => {
+                const available = getAvailableStock(product);
+                const isSelected = product.id === selectedWeightProductId;
+
+                return `
+                    <article class="weight-product-row ${isSelected ? "product-selected" : ""}">
+                        <div class="product-type-icon weight-icon">
+                            <i class="bi bi-scales" aria-hidden="true"></i>
+                        </div>
+                        <div class="product-info">
+                            <strong>${escapeHTML(product.name)}</strong>
+                            <span>${escapeHTML(product.category)} · <span class="weight-product-code">${escapeHTML(product.barcode)}</span></span>
+                        </div>
+                        <div class="product-price-info">
+                            <strong>${formatPrice(product.price)}</strong>
+                            <span>/ kg</span>
+                        </div>
+                        <div class="weight-product-stock ${available <= 0 ? "stock-none" : ""}">${formatKg(available)} kg disponibles</div>
+                        <button type="button" class="add-product-button weight-add-button" data-action="select-weight-product" data-product-id="${product.id}" ${available <= 0 ? "disabled" : ""}>
+                            <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                            <span>Vender</span>
+                        </button>
+                    </article>
+                `;
+            }).join("");
+        }
+
+        function lookupProduct(event) {
+            event.preventDefault();
+            const scannedCode = productCodeInput.value.trim().toLocaleLowerCase("es");
+            if (!scannedCode) {
+                setLookupMessage("Ingresa o escanea un código.", true);
+                productCodeInput.focus();
+                return;
+            }
+
+            const product = products.find(item => item.barcode.toLocaleLowerCase("es") === scannedCode);
+            if (!product) {
+                setLookupMessage("No hay un producto asociado a ese código.", true);
+                productCodeInput.select();
+                return;
+            }
+
+            if (getAvailableStock(product) <= 0) {
+                setLookupMessage("No hay existencias disponibles de ese producto.", true);
+                productCodeInput.select();
+                return;
+            }
+
+            productCodeInput.value = "";
+            setLookupMessage(`${product.name} encontrado.`, false);
+            if (product.type === "weight") {
+                selectWeightProduct(product.id);
+            } else {
+                selectedWeightProductId = null;
+                document.getElementById("weightPanel").hidden = true;
+                addUnitProduct(product.id);
+                renderWeightProducts();
+                productCodeInput.focus();
+            }
+        }
+
+        function selectWeightProduct(productId) {
+            const product = getProduct(productId);
+            if (!product || product.type !== "weight") return;
+
+            selectedWeightProductId = productId;
+            selectedWeightUnit = "g";
+            weightAmountInput.value = "";
+            document.querySelectorAll("#weightPanel .unit-button").forEach(button => {
+                const isActive = button.dataset.unit === selectedWeightUnit;
+                button.classList.toggle("active", isActive);
+                button.setAttribute("aria-pressed", String(isActive));
+            });
+
+            document.getElementById("weightPanel").hidden = false;
+            document.getElementById("weightProductLabel").textContent = `${product.name} · ${product.barcode}`;
+            document.getElementById("weightUnitPrice").textContent = `${formatPrice(product.price)} / kg`;
+            document.getElementById("weightError").hidden = true;
+            updateWeightEstimate();
+            renderWeightProducts();
+            weightAmountInput.focus();
+        }
+
+        function renderProducts() {
+            renderWeightProducts();
+        }
+
+        function updateWeightEstimate() {
+            const product = getProduct(selectedWeightProductId);
+            if (!product) return;
+
+            const amount = parseDecimal(weightAmountInput.value);
+            const quantityKg = selectedWeightUnit === "g" ? amount / 1000 : amount;
+            const subtotal = product.price * quantityKg;
+            const available = getAvailableStock(product);
+
+            document.getElementById("weightEstimate").textContent = formatPrice(subtotal);
+            document.getElementById("weightAvailable").textContent =
+                `Disponible: ${formatKg(available)} kg`;
+        }
+
+        function addUnitProduct(productId) {
+            const product = getProduct(productId);
+            if (!product || product.type !== "unit") return;
+
+            const line = cart.find(item => item.type === "unit" && item.productId === productId);
+            const currentQuantity = line ? line.quantity : 0;
+            if (currentQuantity >= product.stock) {
+                showToast("No hay más unidades disponibles de este producto.");
+                return;
+            }
+
+            if (line) {
+                line.quantity += 1;
+            } else {
+                cart.push({ id: `unit-${productId}`, productId, type: "unit", quantity: 1 });
+            }
+            renderCart();
+            renderProducts();
+        }
+
+        function addWeightedProduct() {
+            const product = getProduct(selectedWeightProductId);
+            const amount = parseDecimal(weightAmountInput.value);
+            const quantityKg = selectedWeightUnit === "g" ? amount / 1000 : amount;
+            const available = product ? getAvailableStock(product) : 0;
+            const error = document.getElementById("weightError");
+
+            if (!product) {
+                error.textContent = "Selecciona un producto vendido por peso.";
+                error.hidden = false;
+                return;
+            }
+            if (amount <= 0) {
+                error.textContent = "Ingresa una cantidad mayor que cero.";
+                error.hidden = false;
+                weightAmountInput.focus();
+                return;
+            }
+            if (selectedWeightUnit === "g" && !Number.isInteger(amount)) {
+                error.textContent = "La cantidad en gramos debe ser un número entero.";
+                error.hidden = false;
+                weightAmountInput.focus();
+                return;
+            }
+            if (selectedWeightUnit === "kg" && Math.abs(amount * 1000 - Math.round(amount * 1000)) > 0.000001) {
+                error.textContent = "El peso en kg admite hasta tres decimales.";
+                error.hidden = false;
+                weightAmountInput.focus();
+                return;
+            }
+            if (quantityKg > available + Number.EPSILON) {
+                error.textContent = `La cantidad supera el stock disponible (${formatKg(available)} kg).`;
+                error.hidden = false;
+                weightAmountInput.focus();
+                return;
+            }
+
+            const existingLine = cart.find(line => line.type === "weight" && line.productId === product.id);
+            if (existingLine) {
+                existingLine.quantityKg += quantityKg;
+                existingLine.unit = selectedWeightUnit;
+                existingLine.amount = selectedWeightUnit === "g"
+                    ? Math.round(existingLine.quantityKg * 1000)
+                    : Number(existingLine.quantityKg.toFixed(3));
+                existingLine.quantityKg = selectedWeightUnit === "g"
+                    ? existingLine.amount / 1000
+                    : existingLine.amount;
+            } else {
+                cart.push({
+                    id: `weight-${product.id}`,
+                    productId: product.id,
+                    type: "weight",
+                    quantityKg,
+                    amount,
+                    unit: selectedWeightUnit
+                });
+            }
+            error.hidden = true;
+            weightAmountInput.value = "";
+            updateWeightEstimate();
+            renderCart();
+            renderProducts();
+            showToast(`${product.name} agregado a la venta.`);
+            weightAmountInput.focus();
+        }
+
+        function getLineQuantityLabel(line) {
+            if (line.type === "unit") {
+                return `${line.quantity} ${line.quantity === 1 ? "unidad" : "unidades"}`;
+            }
+            return line.unit === "g"
+                ? `${new Intl.NumberFormat("es-CL", { maximumFractionDigits: 0 }).format(line.amount)} g`
+                : `${formatKg(line.amount)} kg`;
+        }
+
+        function getLineSubtotal(line) {
+            const product = getProduct(line.productId);
+            return line.type === "unit"
+                ? product.price * line.quantity
+                : product.price * line.quantityKg;
+        }
+
+        function updateCartTotals() {
+            const itemCount = cart.reduce((total, line) => total + (line.type === "unit" ? line.quantity : 1), 0);
+            const total = cart.reduce((sum, line) => sum + Math.round(getLineSubtotal(line)), 0);
+
+            document.getElementById("cartLineCount").textContent =
+                `${itemCount} ${itemCount === 1 ? "artículo" : "artículos"}`;
+            document.getElementById("subtotalValue").textContent = formatPrice(total);
+            document.getElementById("totalValue").textContent = formatPrice(total);
+            document.getElementById("completeSaleButton").disabled = cart.length === 0;
+            document.getElementById("clearCartButton").disabled = cart.length === 0;
+        }
+
+        function renderCart() {
+            const cartItems = document.getElementById("cartItems");
+            const cartEmpty = document.getElementById("cartEmpty");
+            cartEmpty.hidden = cart.length > 0;
+
+            cartItems.innerHTML = cart.map(line => {
+                const product = getProduct(line.productId);
+                const quantityLabel = getLineQuantityLabel(line);
+                const canChangeQuantity = line.type === "unit";
+                const secondaryText = line.type === "weight"
+                    ? `${formatPrice(product.price)} / kg · ${quantityLabel}`
+                    : `${quantityLabel} · ${formatPrice(product.price)} c/u`;
+
+                return `
+                        <article class="cart-line" data-cart-line-id="${line.id}">
+                        <div class="cart-line-main">
+                            <strong>${escapeHTML(product.name)}</strong>
+                            <span class="${line.type === "weight" ? "cart-weight-description" : ""}">${secondaryText}</span>
+                        </div>
+                        <div class="cart-line-end">
+                            <strong class="cart-line-subtotal">${formatPrice(getLineSubtotal(line))}</strong>
+                            <div class="cart-line-controls">
+                                ${canChangeQuantity ? `
+                                    <button type="button" class="quantity-button" data-action="decrease" data-line-id="${line.id}" aria-label="Quitar una unidad de ${escapeHTML(product.name)}" title="Disminuir cantidad">
+                                        <i class="bi bi-dash" aria-hidden="true"></i>
+                                    </button>
+                                    <span class="quantity-value">${line.quantity}</span>
+                                    <button type="button" class="quantity-button" data-action="increase" data-line-id="${line.id}" aria-label="Agregar una unidad de ${escapeHTML(product.name)}" title="Aumentar cantidad" ${line.quantity >= product.stock ? "disabled" : ""}>
+                                        <i class="bi bi-plus" aria-hidden="true"></i>
+                                    </button>
+                                ` : `
+                                    <div class="weight-cart-editor">
+                                        <label class="visually-hidden" for="cart-weight-${line.productId}">Peso de ${escapeHTML(product.name)}</label>
+                                        <input id="cart-weight-${line.productId}" class="weight-cart-input" type="text" inputmode="decimal" value="${escapeHTML(line.amount)}" data-action="edit-weight" data-line-id="${line.id}" aria-label="Peso de ${escapeHTML(product.name)}">
+                                        <div class="unit-toggle cart-unit-toggle" role="group" aria-label="Unidad del peso de ${escapeHTML(product.name)}">
+                                            <button type="button" class="unit-button cart-weight-unit ${line.unit === "g" ? "active" : ""}" data-action="set-weight-unit" data-line-id="${line.id}" data-unit="g" aria-pressed="${line.unit === "g"}">g</button>
+                                            <button type="button" class="unit-button cart-weight-unit ${line.unit === "kg" ? "active" : ""}" data-action="set-weight-unit" data-line-id="${line.id}" data-unit="kg" aria-pressed="${line.unit === "kg"}">kg</button>
+                                        </div>
+                                        <button type="button" class="remove-line-button" data-action="remove" data-line-id="${line.id}" aria-label="Quitar ${escapeHTML(product.name)} de la venta" title="Quitar producto">
+                                            <i class="bi bi-trash3" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                    <span class="cart-weight-error" hidden></span>
+                                `}
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+            updateCartTotals();
+        }
+
+        function handleCartWeightInput(event) {
+            const input = event.target.closest('input[data-action="edit-weight"]');
+            if (!input) return;
+
+            const line = cart.find(item => item.id === input.dataset.lineId);
+            const product = line && getProduct(line.productId);
+            if (!line || !product) return;
+
+            const cartLine = input.closest(".cart-line");
+            const error = cartLine.querySelector(".cart-weight-error");
+            const rawValue = input.value.trim();
+            if (!rawValue || rawValue.endsWith(".") || rawValue.endsWith(",")) return;
+
+            const amount = parseDecimal(rawValue);
+            const quantityKg = line.unit === "g" ? amount / 1000 : amount;
+            let errorMessage = "";
+
+            if (amount <= 0) {
+                errorMessage = "Ingresa un peso mayor que cero.";
+            } else if (line.unit === "g" && !Number.isInteger(amount)) {
+                errorMessage = "Los gramos deben ser un número entero.";
+            } else if (line.unit === "kg" && Math.abs(amount * 1000 - Math.round(amount * 1000)) > 0.000001) {
+                errorMessage = "El peso en kg admite hasta tres decimales.";
+            } else if (quantityKg > getAvailableStock(product, line.id) + Number.EPSILON) {
+                errorMessage = `El máximo disponible es ${formatKg(getAvailableStock(product, line.id))} kg.`;
+            }
+
+            if (errorMessage) {
+                input.setAttribute("aria-invalid", "true");
+                error.textContent = errorMessage;
+                error.hidden = false;
+                return;
+            }
+
+            line.amount = line.unit === "kg" ? Number(amount.toFixed(3)) : amount;
+            line.quantityKg = line.unit === "kg" ? line.amount : line.amount / 1000;
+            input.removeAttribute("aria-invalid");
+            error.hidden = true;
+            cartLine.querySelector(".cart-line-subtotal").textContent = formatPrice(getLineSubtotal(line));
+            cartLine.querySelector(".cart-weight-description").textContent =
+                `${formatPrice(product.price)} / kg · ${getLineQuantityLabel(line)}`;
+            updateCartTotals();
+            updateWeightEstimate();
+            renderWeightProducts();
+        }
+
+        function handleCartWeightChange(event) {
+            const input = event.target.closest('input[data-action="edit-weight"]');
+            if (!input) return;
+
+            if (input.getAttribute("aria-invalid") === "true") {
+                const line = cart.find(item => item.id === input.dataset.lineId);
+                if (!line) return;
+                input.value = line.amount;
+                input.removeAttribute("aria-invalid");
+                input.closest(".cart-line").querySelector(".cart-weight-error").hidden = true;
+            }
+
+            renderCart();
+        }
+
+        function updateUnitQuantity(lineId, change) {
+            const line = cart.find(item => item.id === lineId);
+            if (!line || line.type !== "unit") return;
+
+            line.quantity += change;
+            if (line.quantity <= 0) {
+                cart = cart.filter(item => item.id !== lineId);
+            }
+            renderCart();
+            renderProducts();
+        }
+
+        function handleCartAction(event) {
+            const button = event.target.closest("[data-action]");
+            if (!button) return;
+
+            const { action, lineId } = button.dataset;
+            if (action === "increase") updateUnitQuantity(lineId, 1);
+            if (action === "decrease") updateUnitQuantity(lineId, -1);
+            if (action === "set-weight-unit") {
+                const line = cart.find(item => item.id === lineId && item.type === "weight");
+                if (!line) return;
+
+                line.unit = button.dataset.unit;
+                line.amount = line.unit === "g"
+                    ? Math.round(line.quantityKg * 1000)
+                    : Number(line.quantityKg.toFixed(3));
+                line.quantityKg = line.unit === "g" ? line.amount / 1000 : line.amount;
+                renderCart();
+                updateWeightEstimate();
+                renderWeightProducts();
+            }
+            if (action === "remove") {
+                cart = cart.filter(line => line.id !== lineId);
+                renderCart();
+                renderProducts();
+            }
+        }
+
+        function clearCart() {
+            cart = [];
+            renderCart();
+            renderProducts();
+            showToast("La venta se limpió.");
+        }
+
+        function completeSale() {
+            if (cart.length === 0) return;
+
+            const total = cart.reduce((sum, line) => sum + Math.round(getLineSubtotal(line)), 0);
+            const paymentMethod = document.getElementById("paymentMethod").value;
+            showToast(`Venta de ${formatPrice(total)} registrada con ${paymentMethod.toLowerCase()}.`);
+            cart = [];
+            renderCart();
+            renderProducts();
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toastMessage");
+            toast.textContent = message;
+            toast.hidden = false;
+            window.clearTimeout(toastTimeout);
+            toastTimeout = window.setTimeout(() => {
+                toast.hidden = true;
+            }, 3200);
+        }
+
+        document.getElementById("productLookupForm").addEventListener("submit", lookupProduct);
+
+        weightProductList.addEventListener("click", event => {
+            const button = event.target.closest("button[data-action]");
+            if (!button) return;
+
+            if (button.dataset.action === "select-weight-product") {
+                selectWeightProduct(button.dataset.productId);
+            }
+        });
+
+        weightAmountInput.addEventListener("input", () => {
+            document.getElementById("weightError").hidden = true;
+            updateWeightEstimate();
+        });
+
+        document.querySelectorAll("#weightPanel .unit-button").forEach(button => {
+            button.addEventListener("click", () => {
+                selectedWeightUnit = button.dataset.unit;
+                document.querySelectorAll(".unit-button").forEach(unitButton => {
+                    const isActive = unitButton === button;
+                    unitButton.classList.toggle("active", isActive);
+                    unitButton.setAttribute("aria-pressed", String(isActive));
+                });
+                weightAmountInput.value = "";
+                document.getElementById("weightError").hidden = true;
+                updateWeightEstimate();
+                weightAmountInput.focus();
+            });
+        });
+
+        document.getElementById("addWeightButton").addEventListener("click", addWeightedProduct);
+        document.getElementById("closeWeight").addEventListener("click", () => {
+            selectedWeightProductId = null;
+            document.getElementById("weightPanel").hidden = true;
+            renderWeightProducts();
+        });
+        document.getElementById("cartItems").addEventListener("click", handleCartAction);
+        document.getElementById("cartItems").addEventListener("input", handleCartWeightInput);
+        document.getElementById("cartItems").addEventListener("change", handleCartWeightChange);
+        document.getElementById("clearCartButton").addEventListener("click", clearCart);
+        document.getElementById("completeSaleButton").addEventListener("click", completeSale);
+
+        renderWeightProducts();
+        renderCart();
+    </script>
+</body>
+</html>
