@@ -288,6 +288,24 @@ body {
     font-size: 12px;
 }
 
+/* Botón de Exportación a Planilla */
+.btn-exportar {
+    min-height: 46px;
+    background-color: var(--verde);
+    border: 1px solid var(--verde);
+    color: var(--blanco);
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: background-color .2s ease, border-color .2s ease;
+}
+
+.btn-exportar:hover,
+.btn-exportar:focus-visible {
+    background-color: #436148;
+    border-color: #436148;
+    color: var(--blanco);
+}
 
 /* Adaptación responsive */
 @media (max-width: 576px) {
