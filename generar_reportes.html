@@ -201,7 +201,37 @@
             </div>
         </section>
 
+        <!-- Exportar Reporte en Formato Planilla -->
+        <section class="tarjeta-formulario mb-4" aria-labelledby="titulo-exportar">
+            <div class="seccion-encabezado mb-3">
+                <div class="icono-seccion" aria-hidden="true">
+                    <span>03</span>
+                </div>
+                <div>
+                    <h2 id="titulo-exportar" class="h5 mb-1 fw-bold">Exportar para gestión contable</h2>
+                    <p class="text-muted small mb-0">Descargue la información consolidada del período para su uso en planillas de cálculo.</p>
+                </div>
+            </div>
 
+            <div class="row g-3 align-items-center">
+                <div class="col-md-6">
+                    <label for="formatoPlanilla" class="form-label">Formato de planilla</label>
+                    <select class="form-select" id="formatoPlanilla" name="formatoPlanilla">
+                        <option value="xlsx" selected>Libro de Excel (.xlsx)</option>
+                        <option value="csv">Texto separado por comas (.csv)</option>
+                    </select>
+                    <div class="form-text">
+                        Formato compatible con Microsoft Excel, Google Sheets y sistemas contables.
+                    </div>
+                </div>
+
+                <div class="col-md-6 d-flex flex-column justify-content-end">
+                    <button type="button" class="btn btn-exportar w-100">
+                        <span class="me-1"></span> Exportar a planilla Excel
+                    </button>
+                </div>
+            </div>
+        </section>
 
         <!-- Botonera de acciones -->
         <div class="d-flex justify-content-end gap-2 mt-4">
