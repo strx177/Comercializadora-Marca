@@ -1,0 +1,315 @@
+/* Comercializadora Marca
+   Hoja de estilos complementaria a Bootstrap 5 - Reportes */
+
+:root {
+    --maiz: #F7C576;
+    --crema: #FBF6EC;
+    --crema-oscuro: #F2E8D7;
+    --texto: #332D25;
+    --texto-suave: #756B5D;
+    --blanco: #FFFEFB;
+    --borde: #E8DDCA;
+    --verde: #54785A;
+    --sombra: 0 10px 28px rgba(77, 58, 31, .07);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--crema);
+    color: var(--texto);
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 15px;
+}
+
+/* Barra superior */
+.topbar {
+    width: 100%;
+    background: var(--maiz);
+    border-bottom: 1px solid rgba(51, 45, 37, .08);
+    box-shadow: 0 3px 12px rgba(51, 45, 37, .05);
+}
+
+.topbar-contenido {
+    min-height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    color: var(--texto);
+}
+
+.brand-mark {
+    width: 47px;
+    height: 45px;
+    display: grid;
+    place-items: center;
+    background: var(--texto);
+    color: var(--maiz);
+    border-radius: 12px 12px 12px 4px;
+    border-bottom: 4px solid var(--verde);
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.brand-name {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+}
+
+.brand-name span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+}
+
+.brand-name strong {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: .04em;
+}
+
+.nombre-modulo {
+    color: var(--texto);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Contenido principal */
+.contenido-principal {
+    width: 100%;
+    max-width: 960px;
+    flex: 1;
+    padding-top: 42px;
+    padding-bottom: 48px;
+}
+
+.encabezado-pagina {
+    margin-bottom: 26px;
+}
+
+.etiqueta-modulo {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--verde);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+}
+
+.encabezado-pagina h1 {
+    margin: 0 0 10px;
+    color: var(--texto);
+    font-size: clamp(1.65rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -.025em;
+}
+
+.encabezado-pagina p {
+    max-width: 680px;
+    margin: 0;
+    color: var(--texto-suave);
+    line-height: 1.65;
+}
+
+/* Tarjetas de formulario y contenedor */
+.tarjeta-formulario {
+    padding: 30px;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    box-shadow: var(--sombra);
+}
+
+.seccion-encabezado {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.icono-seccion {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    display: grid;
+    place-items: center;
+    background: var(--crema-oscuro);
+    border-radius: 12px;
+    color: var(--texto);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+/* Formulario e Inpust */
+.form-label {
+    margin-bottom: 8px;
+    color: var(--texto);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-control,
+.form-select {
+    min-height: 46px;
+    padding: 10px 13px;
+    background-color: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    color: var(--texto);
+    font-size: 14px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--blanco);
+    border-color: var(--maiz);
+    box-shadow: 0 0 0 .2rem rgba(247, 197, 118, .28);
+}
+
+/* Botones */
+.btn-principal {
+    min-height: 43px;
+    padding: 10px 20px;
+    background: var(--maiz);
+    border: 1px solid var(--maiz);
+    color: var(--texto);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background-color .2s ease, border-color .2s ease;
+}
+
+.btn-principal:hover,
+.btn-principal:focus-visible {
+    background: #EDB45A;
+    border-color: #EDB45A;
+    color: var(--texto);
+}
+
+.btn-volver {
+    min-height: 43px;
+    padding: 10px 17px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    color: var(--texto);
+    transition: background-color .2s ease, border-color .2s ease;
+}
+
+.btn-volver:hover,
+.btn-volver:focus-visible {
+    background: var(--crema);
+    border-color: #D3C4AC;
+    color: var(--texto);
+}
+
+/* Métricas del Reporte */
+.tarjeta-metrica {
+    padding: 18px;
+    background: var(--crema);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+.etiqueta-metrica {
+    display: block;
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--texto-suave);
+    letter-spacing: .08em;
+    margin-bottom: 4px;
+}
+
+.valor-metrica {
+    font-size: 1.6rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.descripcion-metrica {
+    font-size: 11px;
+    color: var(--texto-suave);
+}
+
+/* Tabla del Reporte Contable */
+.tabla-reporte {
+    border-color: var(--borde);
+    font-size: 13.5px;
+}
+
+.tabla-reporte thead tr {
+    background-color: var(--crema-oscuro);
+    border-bottom: 2px solid var(--borde);
+}
+
+.tabla-reporte th {
+    padding: 12px;
+    color: var(--texto);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .02em;
+}
+
+.tabla-reporte td {
+    padding: 12px;
+    border-bottom: 1px solid var(--borde);
+}
+
+.tabla-reporte tfoot tr {
+    border-top: 2px solid var(--borde);
+}
+
+/* Pie de página */
+.pie-pagina {
+    padding: 19px 0;
+    background: var(--crema-oscuro);
+    color: var(--texto-suave);
+    text-align: center;
+    font-size: 12px;
+}
+
+
+/* Adaptación responsive */
+@media (max-width: 576px) {
+    .topbar-contenido {
+        min-height: auto;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .nombre-modulo {
+        text-align: left;
+    }
+
+    .tarjeta-formulario {
+        padding: 20px 17px;
+        border-radius: 12px;
+    }
+
+    .seccion-encabezado {
+        align-items: flex-start;
+    }
+}
