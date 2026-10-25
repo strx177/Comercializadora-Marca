@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dar de baja producto | Comercializadora Marca</title>
+
+    <!-- Bootstrap 5.3.3 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Hoja de estilos propia -->
+    <link rel="stylesheet" href="estilos_baja_productos.css">
+</head>
+<body>
+
+    <!-- Barra superior -->
+    <header class="topbar">
+        <div class="container topbar-contenido">
+            <div class="brand">
+                <div class="brand-mark" aria-hidden="true">M</div>
+                <div class="brand-name">
+                    <span>COMERCIALIZADORA</span>
+                    <strong>MARCA</strong>
+                </div>
+            </div>
+
+            <div class="nombre-modulo">
+                Gestión de inventario
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container contenido-principal">
+        <div class="encabezado-pagina">
+            <span class="etiqueta-modulo">GESTIÓN DE INVENTARIO</span>
+            <h1>Dar de baja producto</h1>
+            <p>
+                Complete la información del producto que dejará de comercializarse
+                para solicitar su baja del inventario.
+            </p>
+        </div>
+
+        <form class="tarjeta-formulario">
+            <!-- Identificación del producto -->
+            <section class="seccion-formulario" aria-labelledby="titulo-producto">
+                <div class="seccion-encabezado">
+                    <div class="icono-seccion" aria-hidden="true">
+                        <span>01</span>
+                    </div>
+                    <div>
+                        <h2 id="titulo-producto">Identificación del producto</h2>
+                        <p>Indique cuál es el producto que desea dar de baja.</p>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="codigoProducto" class="form-label">
+                            Código del producto
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="codigoProducto"
+                            name="codigoProducto"
+                            placeholder="Ej.: PROD-001"
+                        >
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="nombreProducto" class="form-label">
+                            Nombre del producto
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="nombreProducto"
+                            name="nombreProducto"
+                            placeholder="Ingrese el nombre del producto"
+                        >
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="estadoActual" class="form-label">
+                            Estado actual del producto
+                        </label>
+                        <select
+                            class="form-select"
+                            id="estadoActual"
+                            name="estadoActual"
+                        >
+                            <option value="" selected>Seleccione el estado actual</option>
+                            <option value="activo">Activo</option>
+                            <option value="no-disponible">No disponible</option>
+                        </select>
+                        <div class="form-text">
+                            Seleccione el estado que presenta actualmente el producto.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="separador">
+
+            <!-- Información de la baja -->
+            <section class="seccion-formulario" aria-labelledby="titulo-baja">
+                <div class="seccion-encabezado">
+                    <div class="icono-seccion" aria-hidden="true">
+                        <span>02</span>
+                    </div>
+                    <div>
+                        <h2 id="titulo-baja">Información de la baja</h2>
+                        <p>Indique el motivo por el que el producto dejará de comercializarse.</p>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-7">
+                        <label for="motivoBaja" class="form-label">
+                            Motivo de la baja
+                        </label>
+                        <select
+                            class="form-select"
+                            id="motivoBaja"
+                            name="motivoBaja"
+                        >
+                            <option value="" selected>Seleccione un motivo</option>
+                            <option value="deterioro">Deterioro o daño</option>
+                            <option value="perdida">Pérdida</option>
+                            <option value="robo">Robo</option>
+                            <option value="obsolescencia">Obsolescencia</option>
+                            <option value="fin-comercializacion">Fin de comercialización</option>
+                            <option value="otro">Otro motivo</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="observaciones" class="form-label">
+                            Observaciones <span class="texto-opcional">(opcional)</span>
+                        </label>
+                        <textarea
+                            class="form-control"
+                            id="observaciones"
+                            name="observaciones"
+                            rows="4"
+                            placeholder="Agregue información adicional sobre la baja, si corresponde."
+                        ></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="separador">
+
+            <!-- Aviso informativo -->
+            <section class="aviso-baja" aria-labelledby="titulo-aviso">
+                <div class="aviso-icono" aria-hidden="true">i</div>
+                <div>
+                    <h2 id="titulo-aviso">Importante antes de continuar</h2>
+                    <p>
+                        Al dar de baja este producto, su estado deberá cambiar para impedir
+                        que continúe disponible para su comercialización.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Acciones -->
+            <div class="acciones-formulario">
+                <button type="button" class="btn btn-principal">
+                    Dar de baja producto
+                </button>
+
+                <button type="reset" class="btn btn-secundario">
+                    Limpiar formulario
+                </button>
+
+                <button type="button" class="btn btn-volver">
+                    Volver
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="pie-pagina">
+        <div class="container">
+            <p class="mb-0">Comercializadora Marca &copy; 2026</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    background-color: #FFF9EF;
+    color: #3F382F;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Barra superior */
+.barra-superior {
+    background-color: #F7C576;
+    padding: 24px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.nombre-sistema {
+    margin: 0;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #49351D;
+}
+
+.nombre-modulo {
+    margin-top: 5px;
+    color: #634D31;
+    font-size: 0.95rem;
+}
+
+/* Contenido principal */
+.contenido-principal {
+    max-width: 1000px;
+    padding-top: 35px;
+    padding-bottom: 45px;
+}
+
+.encabezado-pagina {
+    margin-bottom: 25px;
+}
+
+.encabezado-pagina h2 {
+    margin-bottom: 10px;
+    color: #49351D;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.encabezado-pagina p {
+    margin-bottom: 0;
+    color: #756B5E;
+    line-height: 1.6;
+}
+
+/* Tarjetas de los formularios */
+.tarjeta-formulario {
+    padding: 25px;
+    background-color: #FFFFFF;
+    border: 1px solid #E9DFD0;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(73, 53, 29, 0.04);
+}
+
+.titulo-seccion {
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #F0E6D8;
+    color: #49351D;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Etiquetas e inputs */
+.form-label {
+    margin-bottom: 8px;
+    color: #493F33;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-control,
+.form-select {
+    min-height: 44px;
+    border-color: #DED6CA;
+    border-radius: 7px;
+    background-color: #FFFEFC;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #D9A64F;
+    box-shadow: 0 0 0 0.2rem rgba(247, 197, 118, 0.3);
+}
+
+/* Resumen del total */
+.resumen-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: #FFF4DF;
+    border: 1px solid #F2DEB8;
+    border-radius: 8px;
+}
+
+.resumen-total span {
+    color: #634D31;
+    font-weight: 600;
+}
+
+.resumen-total strong {
+    color: #49351D;
+    font-size: 1.5rem;
+}
+
+/* Botones */
+.acciones-formulario {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.acciones-formulario .btn {
+    min-height: 43px;
+    padding: 10px 18px;
+    border-radius: 7px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.btn-principal {
+    background-color: #F7C576;
+    border: 1px solid #E7B35F;
+    color: #49351D;
+}
+
+.btn-principal:hover {
+    background-color: #EDB75F;
+    border-color: #DDA64E;
+    color: #49351D;
+}
+
+.btn-secundario {
+    background-color: #F0EAE0;
+    border: 1px solid #DED6CA;
+    color: #493F33;
+}
+
+.btn-secundario:hover {
+    background-color: #E5DCCE;
+    border-color: #D2C5B3;
+    color: #493F33;
+}
+
+.btn-volver {
+    background-color: #FFFFFF;
+    border: 1px solid #CFC4B5;
+    color: #493F33;
+}
+
+.btn-volver:hover {
+    background-color: #F5F0E8;
+    border-color: #BBAA95;
+    color: #493F33;
+}
+
+/* Pie de página */
+.pie-pagina {
+    padding: 20px 0;
+    background-color: #F0E7D8;
+    color: #756B5E;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 576px) {
+    .barra-superior {
+        padding: 20px 0;
+    }
+
+    .nombre-sistema {
+        font-size: 1.4rem;
+    }
+
+    .contenido-principal {
+        padding-top: 25px;
+        padding-bottom: 30px;
+    }
+
+    .encabezado-pagina h2 {
+        font-size: 1.5rem;
+    }
+
+    .tarjeta-formulario {
+        padding: 18px;
+    }
+
+    .acciones-formulario {
+        flex-direction: column;
+    }
+
+    .acciones-formulario .btn {
+        width: 100%;
+    }
+
+    .resumen-total strong {
+        font-size: 1.25rem;
+    }
+}
