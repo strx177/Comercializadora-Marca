@@ -2,9 +2,9 @@ Aplicación de Inventario y ventas para Comercializadora Marca
 
 Integrantes:
 
-Giovanni Gómez Carrasco = StrX
-Joaquín Guarachi Gaspar = jguarachi
-Christian Mollo Quispe = ChrisFullHD
+Giovanni Alexis Gómez Carrasco = strx177
+Joaquín Alejandro Guarachi Gaspar = JoakoGG
+Christian Matías Alexander Mollo Quispe = ChrisFullHD
 
 | Gestor                                          | HU incluidas               | N° de HU | Responsable      | Rama              |
 | ----------------------------------------------- | -------------------------- | -------- | ---------------- | ----------------- |
