@@ -4,14 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Iniciar sesión</title>
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="estilos_login_register.css">
 </head>
 <body>
   <main class="tarjeta">
+    <div class="marca" aria-label="Comercializadora Marca">
+      <span class="marca-icono" aria-hidden="true">M</span>
+      <span class="marca-nombre"><span>COMERCIALIZADORA</span><strong>MARCA</strong></span>
+    </div>
     <h1>Iniciar sesión</h1>
     <p class="subtitulo">Ingresa tus datos para continuar.</p>
 
-    <form action="#" method="post">
+    <form action="#" method="post" id="formulario-login">
       <div class="campo">
         <label for="correo">Correo electrónico</label>
         <input type="email" id="correo" name="correo" placeholder="tu@correo.com" autocomplete="email" required>
@@ -27,5 +31,11 @@
 
     <p class="enlace-alterno">¿No tienes cuenta? <a href="registro.html">Crear cuenta</a></p>
   </main>
+  <script>
+    document.getElementById("formulario-login").addEventListener("submit", function (e) {
+      e.preventDefault();
+      window.location.href = "buscar_productos.html";
+    });
+  </script>
 </body>
 </html>
