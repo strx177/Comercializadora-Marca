@@ -510,7 +510,9 @@ select {
 }
 
 .table-responsive {
+    max-width: 100%;
     overflow-x: auto;
+    contain: paint;
 }
 
 .product-table {
