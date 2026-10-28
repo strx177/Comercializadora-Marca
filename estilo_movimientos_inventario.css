@@ -507,8 +507,10 @@ select {
 }
 
 .table-responsive {
+  max-width: 100%;
   border: 1px solid var(--line);
   border-radius: 9px;
+  contain: paint;
 }
 
 .movements-table {
