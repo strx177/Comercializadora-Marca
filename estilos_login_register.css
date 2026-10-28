@@ -1,0 +1,191 @@
+/* Estilos compartidos para login.html y registro.html */
+
+:root {
+  --fondo: #FBF6EC;
+  --tarjeta: #FFFEFB;
+  --borde: #E8DDCA;
+  --texto: #332D25;
+  --texto-suave: #756B5D;
+  --acento: #F7C576;
+  --acento-hover: #EDB45A;
+  --error: #b3261e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(247, 197, 118, 0.32), transparent 34%),
+    radial-gradient(ellipse at 88% 90%, rgba(84, 120, 90, 0.12), transparent 30%),
+    var(--fondo);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.tarjeta {
+  width: 100%;
+  max-width: 430px;
+  padding: 40px 36px;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 18px;
+  box-shadow: 0 18px 48px rgba(77, 58, 31, 0.12);
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.marca-icono {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  color: var(--acento);
+  background: var(--texto);
+  border-bottom: 4px solid #54785A;
+  border-radius: 12px 12px 12px 4px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.marca-nombre {
+  display: flex;
+  flex-direction: column;
+  color: var(--texto);
+  line-height: 1.05;
+}
+
+.marca-nombre span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.marca-nombre strong {
+  font-size: 21px;
+  letter-spacing: .04em;
+}
+
+.tarjeta h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  letter-spacing: -0.03em;
+}
+
+.subtitulo {
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.campo {
+  margin-bottom: 18px;
+}
+
+.campo label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.campo input {
+  width: 100%;
+  padding: 11px 12px;
+  font: inherit;
+  color: var(--texto);
+  background: #FFFEFB;
+  border: 1px solid var(--borde);
+  border-radius: 9px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: #D89D42;
+  box-shadow: 0 0 0 3px rgba(247, 197, 118, 0.28);
+}
+
+.mensaje-error {
+  display: none;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: var(--error);
+}
+
+.campo.invalido input {
+  border-color: var(--error);
+}
+
+.campo.invalido .mensaje-error {
+  display: block;
+}
+
+.boton {
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px;
+  font: inherit;
+  font-weight: 750;
+  color: var(--texto);
+  background: var(--acento);
+  border: 1px solid #E8B35D;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+
+.boton:hover {
+  background: var(--acento-hover);
+  box-shadow: 0 5px 12px rgba(77, 58, 31, 0.12);
+  transform: translateY(-1px);
+}
+
+.boton:focus-visible {
+  outline: 3px solid rgba(247, 197, 118, 0.55);
+  outline-offset: 2px;
+}
+
+.enlace-alterno {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--texto-suave);
+}
+
+.enlace-alterno a {
+  color: #805B25;
+  font-weight: 750;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.enlace-alterno a:hover {
+  color: #5F421A;
+}
+
+@media (max-width: 480px) {
+  .tarjeta {
+    padding: 30px 22px;
+  }
+
+  .marca {
+    margin-bottom: 25px;
+  }
+}

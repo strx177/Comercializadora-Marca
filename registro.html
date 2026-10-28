@@ -4,10 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Crear cuenta</title>
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="estilos_login_register.css">
 </head>
 <body>
   <main class="tarjeta">
+    <div class="marca" aria-label="Comercializadora Marca">
+      <span class="marca-icono" aria-hidden="true">M</span>
+      <span class="marca-nombre"><span>COMERCIALIZADORA</span><strong>MARCA</strong></span>
+    </div>
     <h1>Crear cuenta</h1>
     <p class="subtitulo">Completa el formulario para registrarte.</p>
 
@@ -55,7 +59,10 @@
         e.preventDefault();
         campoConfirmar.classList.add("invalido");
         confirmar.focus();
+        return;
       }
+      e.preventDefault();
+      window.location.href = "login.html";
     });
 
     confirmar.addEventListener("input", function () {
