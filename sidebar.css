@@ -39,6 +39,90 @@ html {
   font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
+.cm-notification-button {
+  position: absolute;
+  top: 34px;
+  right: 15px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  color: var(--cm-texto);
+  background: rgba(255, 254, 251, .62);
+  border: 1px solid rgba(51, 45, 37, .12);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.cm-notification-count {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  display: grid;
+  width: 17px;
+  height: 17px;
+  place-items: center;
+  color: #fff;
+  background: #a64b3c;
+  border: 2px solid var(--cm-maiz);
+  border-radius: 50%;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.cm-notification-panel {
+  position: fixed;
+  z-index: 2100;
+  top: 82px;
+  left: 254px;
+  width: 310px;
+  padding: 10px;
+  background: var(--cm-blanco);
+  border: 1px solid var(--cm-borde);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(51, 45, 37, .18);
+}
+
+.cm-notification-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 8px 10px;
+}
+
+.cm-notification-heading strong {
+  font-size: 14px;
+}
+
+.cm-notification-heading a {
+  color: #54785A;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.cm-notification-panel button {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 3px;
+  padding: 9px 8px;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid #eee5d5;
+  cursor: pointer;
+}
+
+.cm-notification-panel button span {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.cm-notification-panel button small {
+  color: var(--cm-texto-suave);
+  font-size: 11px;
+}
+
 .cm-brand {
   display: flex;
   align-items: center;

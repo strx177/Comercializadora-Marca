@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notificaciones | Comercializadora Marca</title>
+  <link rel="stylesheet" href="notificaciones.css">
+</head>
+<body class="module-page">
+  <main>
+    <header class="module-heading">
+      <div>
+        <p class="eyebrow">Centro de alertas</p>
+        <h1>Notificaciones</h1>
+        <p>Revisa los avisos importantes del sistema.</p>
+      </div>
+      <button class="module-button secondary" id="mark-read" type="button">Marcar todas como leídas</button>
+    </header>
+
+    <section class="notification-list" aria-label="Listado de notificaciones">
+      <article class="notification-item">
+        <span class="notification-icon" aria-hidden="true">⚠</span>
+        <div><strong>Stock bajo</strong><small>Arroz Premium tiene 4 unidades disponibles.</small></div>
+        <a class="module-button secondary" href="../inventario/consultar_stock.html">Consultar</a>
+      </article>
+      <article class="notification-item">
+        <span class="notification-icon" aria-hidden="true">◷</span>
+        <div><strong>Producto próximo a vencer</strong><small>Hay lotes que requieren revisión antes del próximo vencimiento.</small></div>
+        <a class="module-button secondary" href="../devoluciones_bajas/registro_fecha_vencimiento.html">Revisar</a>
+      </article>
+      <article class="notification-item">
+        <span class="notification-icon" aria-hidden="true">▧</span>
+        <div><strong>Nuevo reporte disponible</strong><small>El reporte de ventas semanales ya está generado.</small></div>
+        <a class="module-button secondary" href="../estadisticas_reportes/generar_reportes.html">Abrir</a>
+      </article>
+    </section>
+  </main>
+  <script src="../sidebar.js"></script>
+  <script>
+    document.getElementById("mark-read").addEventListener("click", function () {
+      document.querySelectorAll(".notification-item").forEach(function (item) {
+        item.style.opacity = ".58";
+      });
+      this.textContent = "Todas las notificaciones fueron leídas";
+      this.disabled = true;
+    });
+  </script>
+</body>
+</html>

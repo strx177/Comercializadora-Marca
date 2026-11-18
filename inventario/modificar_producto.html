@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Registrar producto | Comercializadora Marca</title>
+    <title>Modificar datos del producto | Comercializadora Marca</title>
 
     <!-- Bootstrap 5 -->
     <link
@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
     <!-- Estilos propios del sistema -->
-    <link href="estilo_registrar_producto.css" rel="stylesheet" />
+    <link href="estilo_modificar_producto.css" rel="stylesheet" />
   </head>
   <body>
     <div class="app-shell">
@@ -19,11 +19,9 @@
         <div class="page-heading">
           <div class="heading-icon" aria-hidden="true">▦</div>
           <div>
-            <div class="eyebrow">PRODUCTOS / REGISTRO</div>
-            <h1>Registrar nuevo producto</h1>
-            <p>
-              Completa la información para incorporar un producto al inventario.
-            </p>
+            <div class="eyebrow">PRODUCTOS / MODIFICACIÓN</div>
+            <h1>Modificar datos del producto</h1>
+            <p>Actualiza la información del producto seleccionado</p>
           </div>
         </div>
 
@@ -37,7 +35,7 @@
               </p>
             </div>
             <span class="form-step"
-              ><span class="step-dot"></span> Nuevo registro</span
+              ><span class="step-dot"></span> Edición de producto</span
             >
           </div>
 
@@ -56,7 +54,8 @@
                       class="form-control"
                       id="barcode"
                       name="barcode"
-                      placeholder="Ingresa o escanea el código de barras"
+                      value="7801234567890"
+                      placeholder="Código de barras"
                       required
                     />
                     <button
@@ -67,7 +66,7 @@
                     </button>
                   </div>
                   <div class="field-help">
-                    También puedes ingresar el código manualmente.
+                    Puedes actualizar el código de barras si corresponde.
                   </div>
                   <div class="associate-row">
                     <span class="associate-line"></span>
@@ -78,7 +77,7 @@
                     class="btn btn-light associate-button w-100"
                     type="button"
                   >
-                    <span aria-hidden="true">↗</span> Asociar producto existente
+                    <span aria-hidden="true">↗</span> Buscar otro producto
                   </button>
                 </div>
 
@@ -94,7 +93,8 @@
                       class="form-control"
                       id="product-name"
                       name="product_name"
-                      placeholder="Ej. Arroz grado 1, 1 kg"
+                      value="Arroz grado 1, 1 kg"
+                      placeholder="Nombre del producto"
                       required
                     />
                   </div>
@@ -110,7 +110,9 @@
                     name="description"
                     rows="4"
                     placeholder="Agrega detalles útiles para identificar el producto"
-                  ></textarea>
+                  >
+Arroz blanco grado 1 en formato de 1 kg.</textarea
+                  >
                 </div>
 
                 <div class="mb-2">
@@ -123,10 +125,8 @@
                     name="category"
                     required
                   >
-                    <option value="" selected disabled>
-                      Selecciona una categoría
-                    </option>
-                    <option>Abarrotes</option>
+                    <option value="" disabled>Selecciona una categoría</option>
+                    <option selected>Abarrotes</option>
                     <option>Bebidas</option>
                     <option>Lácteos y refrigerados</option>
                     <option>Aseo del hogar</option>
@@ -151,23 +151,24 @@
                       name="price"
                       min="0"
                       step="1"
+                      value="1290"
                       placeholder="0"
                       required
                     />
                     <span class="input-group-text currency">CLP</span>
                   </div>
                   <div class="field-help">
-                    Ingresa el precio final de venta en pesos chilenos.
+                    Modifica el precio final de venta en pesos chilenos.
                   </div>
                 </div>
 
                 <div class="product-note">
                   <div class="note-icon" aria-hidden="true">i</div>
                   <div>
-                    <strong>Antes de guardar</strong>
+                    <strong>Antes de guardar los cambios</strong>
                     <p>
-                      Revisa que el código de barras, el nombre y el precio
-                      correspondan al producto que deseas registrar.
+                      Verifica que los datos actualizados sean correctos antes
+                      de confirmar los cambios.
                     </p>
                   </div>
                 </div>
@@ -175,21 +176,21 @@
                 <div class="preview-card">
                   <div class="preview-topline">
                     <span>VISTA PREVIA</span>
-                    <span class="preview-status">Nuevo</span>
+                    <span class="preview-status">En edición</span>
                   </div>
                   <div class="preview-product-icon" aria-hidden="true">▦</div>
-                  <strong id="preview-name">Nombre del producto</strong>
-                  <span id="preview-category">Categoría sin seleccionar</span>
-                  <div class="preview-price" id="preview-price">$ 0</div>
+                  <strong id="preview-name">Arroz grado 1, 1 kg</strong>
+                  <span id="preview-category">Abarrotes</span>
+                  <div class="preview-price" id="preview-price">$ 1.290</div>
                 </div>
               </div>
             </div>
 
             <div class="form-actions">
               <a href="#" class="btn btn-cancel">Cancelar</a>
-              <button type="reset" class="btn btn-reset">Limpiar campos</button>
+              <button type="reset" class="btn btn-reset">Restablecer</button>
               <button type="submit" class="btn btn-save">
-                <span aria-hidden="true">▣</span> Guardar producto
+                <span aria-hidden="true">▣</span> Guardar cambios
               </button>
             </div>
           </form>
@@ -197,10 +198,10 @@
 
         <footer class="page-footer">
           <span>Comercializadora Marca</span>
-          <span>Gestión de productos</span>
+          <span>Modificación de productos</span>
         </footer>
       </main>
     </div>
-    <script src="sidebar.js"></script>
+    <script src="../sidebar.js"></script>
   </body>
 </html>

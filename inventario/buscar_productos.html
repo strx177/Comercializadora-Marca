@@ -24,7 +24,7 @@
                     <p>Encuentra rápidamente productos registrados en el sistema</p>
                 </div>
             </div>
-            <a href="registrar_producto.html" class="new-product-link">
+            <a href="../inventario/registrar_producto.html" class="new-product-link">
                 <i class="bi bi-plus-lg" aria-hidden="true"></i>
                 <span>Registrar producto</span>
             </a>
@@ -293,10 +293,10 @@
                         <td><span class="status-badge ${status}">${getStatusLabel(status)}</span></td>
                         <td>
                             <div class="row-actions">
-                                <a class="icon-action" href="consultar_stock.html" aria-label="Consultar stock de ${escapeHTML(product.name)}" title="Consultar stock">
+                                <a class="icon-action" href="../inventario/consultar_stock.html" aria-label="Consultar stock de ${escapeHTML(product.name)}" title="Consultar stock">
                                     <i class="bi bi-boxes" aria-hidden="true"></i>
                                 </a>
-                                <a class="icon-action" href="modificar_producto.html" aria-label="Modificar ${escapeHTML(product.name)}" title="Modificar producto">
+                                <a class="icon-action" href="../inventario/modificar_producto.html" aria-label="Modificar ${escapeHTML(product.name)}" title="Modificar producto">
                                     <i class="bi bi-pencil-square" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -328,6 +328,6 @@
         populateCategories();
         renderProducts();
     </script>
-    <script src="sidebar.js"></script>
+    <script src="../sidebar.js"></script>
 </body>
 </html>

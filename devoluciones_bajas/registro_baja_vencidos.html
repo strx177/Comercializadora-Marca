@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar vencimiento | Comercializadora Marca</title>
+    <title>Registrar baja por vencimiento | Comercializadora Marca</title>
 
     <!-- Bootstrap 5.3.3 -->
     <link
@@ -12,7 +12,7 @@
     >
 
     <!-- Hoja de estilos propia -->
-    <link rel="stylesheet" href="estilos_fecha_vencimiento.css">
+    <link rel="stylesheet" href="estilos_baja_vencidos.css">
 </head>
 <body>
 
@@ -20,15 +20,15 @@
     <main class="container contenido-principal">
         <div class="encabezado-pagina">
             <span class="etiqueta-modulo">GESTIÓN DE INVENTARIO</span>
-            <h1>Registrar vencimiento de producto</h1>
+            <h1>Registrar baja de productos vencidos</h1>
             <p>
-                Ingrese los datos del producto y su fecha de vencimiento
-                para mantener actualizado el registro del inventario.
+                Registre la baja de los productos cuya fecha de vencimiento haya sido alcanzada 
+                para retirarlos del stock disponible para la venta.
             </p>
         </div>
 
         <form class="tarjeta-formulario">
-            <!-- Datos del producto -->
+            <!-- Sección 01: Datos del producto -->
             <section class="seccion-formulario" aria-labelledby="titulo-producto">
                 <div class="seccion-encabezado">
                     <div class="icono-seccion" aria-hidden="true">
@@ -36,7 +36,7 @@
                     </div>
                     <div>
                         <h2 id="titulo-producto">Datos del producto</h2>
-                        <p>Identifique el producto que desea registrar.</p>
+                        <p>Identifique el producto vencido que dará de baja.</p>
                     </div>
                 </div>
 
@@ -71,20 +71,20 @@
 
             <hr class="separador">
 
-            <!-- Fecha de vencimiento -->
-            <section class="seccion-formulario" aria-labelledby="titulo-vencimiento">
+            <!-- Sección 02: Detalle de la baja -->
+            <section class="seccion-formulario" aria-labelledby="titulo-detalle-baja">
                 <div class="seccion-encabezado">
                     <div class="icono-seccion" aria-hidden="true">
                         <span>02</span>
                     </div>
                     <div>
-                        <h2 id="titulo-vencimiento">Fecha de vencimiento</h2>
-                        <p>Indique la fecha en que vence el producto.</p>
+                        <h2 id="titulo-detalle-baja">Detalle de la baja</h2>
+                        <p>Especifique la fecha de vencimiento, la cantidad de unidades y observaciones.</p>
                     </div>
                 </div>
 
                 <div class="row g-3">
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <label for="fechaVencimiento" class="form-label">
                             Fecha de vencimiento
                         </label>
@@ -95,8 +95,38 @@
                             name="fechaVencimiento"
                         >
                         <div class="form-text">
-                            Seleccione la fecha indicada en el producto o su envase.
+                            Indique la fecha en que venció el lote del producto.
                         </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="cantidadBaja" class="form-label">
+                            Cantidad a dar de baja
+                        </label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="cantidadBaja"
+                            name="cantidadBaja"
+                            min="1"
+                            placeholder="Ej.: 10"
+                        >
+                        <div class="form-text">
+                            Número de unidades que serán retiradas del inventario.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="observacionesBaja" class="form-label">
+                            Observaciones <span class="text-muted font-weight-normal">(Opcional)</span>
+                        </label>
+                        <textarea
+                            class="form-control"
+                            id="observacionesBaja"
+                            name="observacionesBaja"
+                            rows="3"
+                            placeholder="Ingrese cualquier detalle adicional sobre la baja o el estado del producto..."
+                        ></textarea>
                     </div>
                 </div>
             </section>
@@ -104,7 +134,7 @@
             <!-- Acciones -->
             <div class="acciones-formulario">
                 <button type="button" class="btn btn-principal">
-                    Registrar vencimiento
+                    Registrar baja
                 </button>
 
                 <button type="reset" class="btn btn-secundario">
@@ -125,6 +155,6 @@
         </div>
     </footer>
 
-    <script src="sidebar.js"></script>
+    <script src="../sidebar.js"></script>
 </body>
 </html>

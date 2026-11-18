@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Facturas | Comercializadora Marca</title>
+  <link rel="stylesheet" href="facturas.css">
+</head>
+<body class="module-page">
+  <main>
+    <header class="module-heading">
+      <div>
+        <p class="eyebrow">Ventas y documentos</p>
+        <h1>Facturas</h1>
+        <p>Consulta y administra las facturas emitidas.</p>
+      </div>
+      <button class="module-button" type="button" onclick="alert('La emisión de facturas estará disponible al conectar el módulo de ventas.')">＋ Nueva factura</button>
+    </header>
+
+    <section class="module-grid" aria-label="Resumen de facturas">
+      <article class="module-card"><p>Facturas emitidas</p><strong>128</strong></article>
+      <article class="module-card"><p>Total facturado</p><strong>$ 18.450</strong></article>
+      <article class="module-card"><p>Pendientes</p><strong>6</strong></article>
+    </section>
+
+    <section class="module-table-wrap" aria-label="Listado de facturas">
+      <table class="module-table">
+        <thead><tr><th>N.º factura</th><th>Cliente</th><th>Fecha</th><th>Total</th><th>Estado</th><th>Acciones</th></tr></thead>
+        <tbody>
+          <tr><td>FAC-0128</td><td>Comercial Andina</td><td>18/11/2026</td><td>$ 1.240</td><td><span class="status">Pagada</span></td><td><a class="module-button secondary" href="#">Ver</a></td></tr>
+          <tr><td>FAC-0127</td><td>Abarrotes Central</td><td>17/11/2026</td><td>$ 860</td><td><span class="status">Pagada</span></td><td><a class="module-button secondary" href="#">Ver</a></td></tr>
+          <tr><td>FAC-0126</td><td>Mercado El Sol</td><td>16/11/2026</td><td>$ 2.100</td><td><span class="status">Pendiente</span></td><td><a class="module-button secondary" href="#">Ver</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <script src="../sidebar.js"></script>
+</body>
+</html>
