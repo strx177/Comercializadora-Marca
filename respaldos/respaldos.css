@@ -15,6 +15,14 @@
   font-family: Inter, "Segoe UI", sans-serif;
 }
 
+.cm-app-shell > .main-content {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 38px 42px 28px;
+}
+
 .module-heading {
   display: flex;
   align-items: flex-end;
@@ -59,6 +67,8 @@
 }
 
 .module-table-wrap {
+  width: 100%;
+  min-width: 0;
   overflow-x: auto;
   background: #fff;
   border: 1px solid var(--borde);
@@ -67,6 +77,7 @@
 
 .module-table {
   width: 100%;
+  min-width: 720px;
   border-collapse: collapse;
 }
 
@@ -97,6 +108,10 @@
 
 @media (max-width: 900px) {
   .module-page {
+    padding: 24px 18px;
+  }
+  .cm-app-shell > .main-content {
+    width: 100%;
     padding: 24px 18px;
   }
   .module-heading {

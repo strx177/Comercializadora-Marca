@@ -1,3 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Respaldos | Comercializadora Marca{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'respaldos/respaldos.css' %}">{% endblock %}
 {% block content %}<section class="page-heading"><div><p class="eyebrow">Administracion</p><h1>Respaldos</h1></div><a class="btn btn-maiz" href="/respaldos/nuevo/">+ Crear respaldo</a></section><section class="panel"><table class="table table-hover"><thead><tr><th>Archivo</th><th>Fecha</th><th>Tamaño</th><th>Estado</th><th>Acciones</th></tr></thead><tbody>{% for object in object_list %}<tr><td>{{ object.nombre }}</td><td>{{ object.fecha }}</td><td>{{ object.tamano }}</td><td>{{ object.estado }}</td><td><a href="/respaldos/{{ object.pk }}/">Ver</a> <a href="/respaldos/{{ object.pk }}/editar/">Editar</a> <a href="/respaldos/{{ object.pk }}/eliminar/">Eliminar</a></td></tr>{% empty %}<tr><td colspan="5">No hay respaldos registrados.</td></tr>{% endfor %}</tbody></table></section>{% endblock %}

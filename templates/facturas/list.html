@@ -1,5 +1,45 @@
-{% extends "base.html" %}
-{% load static %}
-{% block title %}Facturas | Comercializadora Marca{% endblock %}
-{% block extra_css %}<link rel="stylesheet" href="{% static 'facturas/facturas.css' %}">{% endblock %}
-{% block content %}<section class="module-heading"><div><p class="eyebrow">Ventas y documentos</p><h1>Facturas</h1></div><a class="module-button" href="/facturas/nuevo/">+ Nueva factura</a></section><section class="module-table-wrap"><table class="module-table"><thead><tr><th>N.º</th><th>Cliente</th><th>Fecha</th><th>Total</th><th>Estado</th><th>Acciones</th></tr></thead><tbody>{% for object in object_list %}<tr><td>{{ object.numero }}</td><td>{{ object.cliente }}</td><td>{{ object.fecha }}</td><td>{{ object.total }}</td><td>{{ object.estado }}</td><td><a href="/facturas/{{ object.pk }}/">Ver</a> <a href="/facturas/{{ object.pk }}/editar/">Editar</a> <a href="/facturas/{{ object.pk }}/eliminar/">Eliminar</a></td></tr>{% empty %}<tr><td colspan="6">No hay facturas registradas.</td></tr>{% endfor %}</tbody></table></section>{% endblock %}
+{% extends "base.html" %} {% load static %} {% block title %}Facturas |
+Comercializadora Marca{% endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'facturas/facturas.css' %}" />{% endblock %} {% block content %}
+<section class="module-heading">
+    <div>
+        <p class="eyebrow">Ventas y documentos</p>
+        <h1>Facturas</h1>
+    </div>
+    <a class="module-button" href="/facturas/nuevo/">+ Nueva factura</a>
+</section>
+<section class="module-table-wrap" aria-label="Listado de facturas">
+    <table class="module-table">
+        <thead>
+            <tr>
+                <th>N.º</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+            <tr>
+                <td>{{ object.numero }}</td>
+                <td>{{ object.cliente }}</td>
+                <td>{{ object.fecha }}</td>
+                <td>{{ object.total }}</td>
+                <td>{{ object.estado }}</td>
+                <td>
+                    <a href="/facturas/{{ object.pk }}/">Ver</a>
+                    <a href="/facturas/{{ object.pk }}/editar/">Editar</a>
+                    <a href="/facturas/{{ object.pk }}/eliminar/">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No hay facturas registradas.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}
