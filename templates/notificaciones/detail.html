@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Detalle de notificacion | Comercializadora Marca{% endblock %}
+{% block content %}<section class="page-heading"><h1>{{ object.titulo|default:'Notificacion' }}</h1><a class="btn" href="/notificaciones/{{ object.pk }}/editar/">Editar</a></section><section class="panel"><p>{{ object.mensaje|default:'Sin mensaje.' }}</p><a href="/notificaciones/{{ object.pk }}/eliminar/">Eliminar notificacion</a></section>{% endblock %}

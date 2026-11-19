@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Eliminar proveedor | Comercializadora Marca{% endblock %}
+{% block content %}<section class="panel"><h1>Eliminar proveedor</h1><p>¿Confirma que desea eliminar <strong>{{ object }}</strong>?</p><form method="post">{% csrf_token %}<button class="btn btn-danger" type="submit">Si, eliminar</button> <a class="btn" href="/proveedores/{{ object.pk }}/">Cancelar</a></form></section>{% endblock %}

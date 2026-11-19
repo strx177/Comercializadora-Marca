@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Detalle de proveedor | Comercializadora Marca{% endblock %}
+{% block content %}<section class="page-heading"><div><p class="eyebrow">Proveedor</p><h1>{{ object.empresa|default:'Proveedor' }}</h1></div><a class="btn" href="/proveedores/{{ object.pk }}/editar/">Editar</a></section><section class="panel"><dl class="row"><dt class="col-md-3">Contacto</dt><dd class="col-md-9">{{ object.contacto|default:'-' }}</dd><dt class="col-md-3">Telefono</dt><dd class="col-md-9">{{ object.telefono|default:'-' }}</dd><dt class="col-md-3">Correo</dt><dd class="col-md-9">{{ object.correo|default:'-' }}</dd></dl><a href="/proveedores/{{ object.pk }}/eliminar/">Eliminar proveedor</a></section>{% endblock %}

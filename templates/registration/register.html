@@ -1,0 +1,23 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crear cuenta | Comercializadora Marca</title>
+  <link rel="stylesheet" href="{% static 'estilos_login_register.css' %}">
+</head>
+<body>
+  <main class="tarjeta">
+    <div class="marca"><span class="marca-icono">M</span><span class="marca-nombre"><span>COMERCIALIZADORA</span><strong>MARCA</strong></span></div>
+    <h1>Crear cuenta</h1>
+    <p class="subtitulo">Completa tus datos para registrarte.</p>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="boton">Crear cuenta</button>
+    </form>
+    <p class="enlace-alterno">¿Ya tienes cuenta? <a href="/login/">Iniciar sesion</a></p>
+  </main>
+</body>
+</html>

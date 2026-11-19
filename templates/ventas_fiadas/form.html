@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Venta fiada | Comercializadora Marca{% endblock %}
+{% block content %}<section class="page-heading"><div><p class="eyebrow">Ventas fiadas</p><h1>{% if object %}Editar venta fiada{% else %}Registrar venta fiada{% endif %}</h1></div></section><section class="panel"><form method="post">{% csrf_token %}{{ form.as_p }}<div class="form-actions"><a class="btn" href="/ventas/fiadas/">Cancelar</a><button class="btn btn-maiz" type="submit">Guardar</button></div></form></section>{% endblock %}

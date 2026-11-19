@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Detalle de venta fiada | Comercializadora Marca{% endblock %}
+{% block content %}<section class="page-heading"><div><p class="eyebrow">Ventas fiadas</p><h1>Venta {{ object.numero|default:'-' }}</h1></div><a class="btn" href="/ventas/fiadas/{{ object.pk }}/editar/">Editar</a></section><section class="panel"><dl class="row"><dt class="col-md-3">Cliente</dt><dd class="col-md-9">{{ object.cliente|default:'-' }}</dd><dt class="col-md-3">Monto fiado</dt><dd class="col-md-9">{{ object.monto|default:'$ 0' }}</dd><dt class="col-md-3">Saldo</dt><dd class="col-md-9">{{ object.saldo|default:'$ 0' }}</dd></dl><a href="/ventas/fiadas/{{ object.pk }}/eliminar/">Eliminar venta fiada</a></section>{% endblock %}

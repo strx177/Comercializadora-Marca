@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Detalle de producto | Comercializadora Marca{% endblock %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">Inventario / Detalle</p><h1>{{ object.nombre|default:'Producto' }}</h1></div><a class="btn" href="/inventario/{{ object.pk }}/editar/">Editar</a></section>
+<section class="panel">
+  <dl class="row">
+    <dt class="col-md-3">Codigo</dt><dd class="col-md-9">{{ object.codigo|default:'-' }}</dd>
+    <dt class="col-md-3">Categoria</dt><dd class="col-md-9">{{ object.categoria|default:'-' }}</dd>
+    <dt class="col-md-3">Stock</dt><dd class="col-md-9">{{ object.stock|default:'0' }}</dd>
+  </dl>
+  <a href="/inventario/{{ object.pk }}/eliminar/">Eliminar producto</a>
+</section>
+{% endblock %}

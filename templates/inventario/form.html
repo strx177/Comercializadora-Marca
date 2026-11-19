@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Producto | Comercializadora Marca{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'inventario/estilo_registrar_producto.css' %}">{% endblock %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">Inventario / Producto</p><h1>{% if object %}Editar producto{% else %}Registrar producto{% endif %}</h1></div></section>
+<section class="form-card panel">
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-actions">
+      <a class="btn btn-cancel" href="/inventario/">Cancelar</a>
+      <button class="btn btn-save" type="submit">Guardar producto</button>
+    </div>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Proveedores | Comercializadora Marca{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'proveedores/proveedores.css' %}">{% endblock %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">Directorio comercial</p><h1>Proveedores</h1></div><a class="btn btn-maiz" href="/proveedores/nuevo/">+ Registrar proveedor</a></section>
+<section class="panel"><table class="table table-hover"><thead><tr><th>Codigo</th><th>Empresa</th><th>Contacto</th><th>Telefono</th><th>Estado</th><th>Acciones</th></tr></thead><tbody>{% for object in object_list %}<tr><td>{{ object.codigo }}</td><td>{{ object.empresa }}</td><td>{{ object.contacto }}</td><td>{{ object.telefono }}</td><td>{{ object.estado }}</td><td><a href="/proveedores/{{ object.pk }}/">Ver</a> <a href="/proveedores/{{ object.pk }}/editar/">Editar</a> <a href="/proveedores/{{ object.pk }}/eliminar/">Eliminar</a></td></tr>{% empty %}<tr><td colspan="6">No hay proveedores registrados.</td></tr>{% endfor %}</tbody></table></section>
+{% endblock %}

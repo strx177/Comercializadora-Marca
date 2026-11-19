@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Factura | Comercializadora Marca{% endblock %}
+{% block content %}<section class="page-heading"><h1>{% if object %}Editar factura{% else %}Nueva factura{% endif %}</h1></section><section class="panel"><form method="post">{% csrf_token %}{{ form.as_p }}<div class="form-actions"><a class="btn" href="/facturas/">Cancelar</a><button class="btn btn-maiz" type="submit">Guardar factura</button></div></form></section>{% endblock %}

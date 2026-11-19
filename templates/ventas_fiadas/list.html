@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Ventas fiadas | Comercializadora Marca{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'ventas/ventas_fiadas.css' %}">{% endblock %}
+{% block content %}<section class="page-heading"><div><p class="eyebrow">Cuentas por cobrar</p><h1>Ventas fiadas</h1></div><a class="btn btn-maiz" href="/ventas/fiadas/nuevo/">+ Registrar venta fiada</a></section><section class="panel"><table class="table table-hover"><thead><tr><th>N.º</th><th>Cliente</th><th>Monto</th><th>Abonado</th><th>Saldo</th><th>Estado</th><th>Acciones</th></tr></thead><tbody>{% for object in object_list %}<tr><td>{{ object.numero }}</td><td>{{ object.cliente }}</td><td>{{ object.monto }}</td><td>{{ object.abonado }}</td><td>{{ object.saldo }}</td><td>{{ object.estado }}</td><td><a href="/ventas/fiadas/{{ object.pk }}/">Ver</a> <a href="/ventas/fiadas/{{ object.pk }}/editar/">Editar</a> <a href="/ventas/fiadas/{{ object.pk }}/eliminar/">Eliminar</a></td></tr>{% empty %}<tr><td colspan="7">No hay ventas fiadas registradas.</td></tr>{% endfor %}</tbody></table></section>{% endblock %}

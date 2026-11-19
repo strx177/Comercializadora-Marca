@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Detalle de baja | Comercializadora Marca{% endblock %}
+{% block content %}<section class="page-heading"><h1>Baja {{ object.numero|default:'-' }}</h1><a class="btn" href="/bajas/{{ object.pk }}/editar/">Editar</a></section><section class="panel"><dl class="row"><dt class="col-md-3">Producto</dt><dd class="col-md-9">{{ object.producto|default:'-' }}</dd><dt class="col-md-3">Motivo</dt><dd class="col-md-9">{{ object.motivo|default:'-' }}</dd><dt class="col-md-3">Cantidad</dt><dd class="col-md-9">{{ object.cantidad|default:'0' }}</dd></dl><a href="/bajas/{{ object.pk }}/eliminar/">Eliminar baja</a></section>{% endblock %}

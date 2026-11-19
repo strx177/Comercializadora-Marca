@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Detalle de devolucion | Comercializadora Marca{% endblock %}
+{% block content %}<section class="page-heading"><h1>Devolucion {{ object.numero|default:'-' }}</h1><a class="btn" href="/devoluciones/{{ object.pk }}/editar/">Editar</a></section><section class="panel"><dl class="row"><dt class="col-md-3">Producto</dt><dd class="col-md-9">{{ object.producto|default:'-' }}</dd><dt class="col-md-3">Motivo</dt><dd class="col-md-9">{{ object.motivo|default:'-' }}</dd></dl><a href="/devoluciones/{{ object.pk }}/eliminar/">Eliminar devolucion</a></section>{% endblock %}

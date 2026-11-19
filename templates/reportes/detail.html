@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Detalle de reporte | Comercializadora Marca{% endblock %}
+{% block content %}<section class="page-heading"><h1>{{ object.nombre|default:'Reporte' }}</h1><a class="btn" href="/reportes/{{ object.pk }}/editar/">Editar</a></section><section class="panel"><dl class="row"><dt class="col-md-3">Tipo</dt><dd class="col-md-9">{{ object.tipo|default:'-' }}</dd><dt class="col-md-3">Periodo</dt><dd class="col-md-9">{{ object.periodo|default:'-' }}</dd></dl><a href="/reportes/{{ object.pk }}/eliminar/">Eliminar reporte</a></section>{% endblock %}

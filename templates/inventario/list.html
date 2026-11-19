@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Productos | Comercializadora Marca{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'inventario/estilo_buscar_productos.css' %}">{% endblock %}
+{% block content %}
+<section class="page-heading">
+  <div><p class="eyebrow">Inventario</p><h1>Productos</h1><p>Consulta y administra los productos registrados.</p></div>
+  <a class="btn btn-maiz" href="/inventario/nuevo/">+ Registrar producto</a>
+</section>
+<section class="panel">
+  <div class="table-responsive">
+    <table class="product-table table">
+      <thead><tr><th>Producto</th><th>Codigo</th><th>Categoria</th><th>Stock</th><th>Estado</th><th>Acciones</th></tr></thead>
+      <tbody>
+        {% for object in object_list %}
+        <tr>
+          <td>{{ object.nombre }}</td><td>{{ object.codigo }}</td><td>{{ object.categoria }}</td><td>{{ object.stock }}</td><td>{{ object.estado|default:'Activo' }}</td>
+          <td><a href="/inventario/{{ object.pk }}/">Ver</a> <a href="/inventario/{{ object.pk }}/editar/">Editar</a> <a href="/inventario/{{ object.pk }}/eliminar/">Eliminar</a></td>
+        </tr>
+        {% empty %}<tr><td colspan="6">No hay productos registrados.</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
